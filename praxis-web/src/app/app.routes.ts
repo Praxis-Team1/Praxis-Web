@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router'
 import { StudentinfoComponent } from './components/signUp/studentinfo/studentinfo.component';
 import { RecordvideoComponent } from './components/signUp/recordvideo/recordvideo.component';
 import { ValidatedataComponent } from './components/signUp/validatedata/validatedata.component';
