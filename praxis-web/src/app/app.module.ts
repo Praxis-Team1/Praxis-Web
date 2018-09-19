@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { StudentinfoComponent } from './components/signUp/studentinfo/studentinfo.component';
@@ -25,6 +25,7 @@ import { ROUTES } from './app.routes';
     BrowserModule,
     RouterModule,
     RouterModule.forRoot(ROUTES)
+
   ],
   providers: [],
   bootstrap: [AppComponent]
