@@ -22,9 +22,7 @@ export class RecordvideoComponent implements OnInit {
 
 
   goToPrevStep(){
-
-    this.router.navigate(['student/signUp/step1']);
-
+    this.router.navigate(['student/signUp/step1'])
   }
 
 
