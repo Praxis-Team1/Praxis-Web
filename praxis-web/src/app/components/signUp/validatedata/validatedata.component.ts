@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterModule, Router} from '@angular/router';
 
 @Component({
   selector: 'app-validatedata',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ValidatedataComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  goToNextStep(){
+    //Falta.
+  //  this.router.navigate(['student/signUp/step3']);
+  }
+
+
+  goToPrevStep(){
+    this.router.navigate(['student/signUp/step2'])
   }
 
 }

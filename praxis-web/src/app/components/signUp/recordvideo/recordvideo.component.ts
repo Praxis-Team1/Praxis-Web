@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterModule, Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-recordvideo',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecordvideoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
+
+
+
+  goToNextStep(){
+    this.router.navigate(['student/signUp/step3']);
+  }
+
+
+  goToPrevStep(){
+
+    this.router.navigate(['student/signUp/step1']);
+
+  }
+
 
 }
