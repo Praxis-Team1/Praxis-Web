@@ -1,0 +1,12 @@
+.navbar-default {
+    background-color: #47a3da;
+}
+
+img {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 4px;
+    width: 150px;
+    -webkit-filter: invert(1);
+    filter: invert(1);
+}
