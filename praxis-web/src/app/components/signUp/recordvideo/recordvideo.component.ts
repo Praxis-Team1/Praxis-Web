@@ -14,8 +14,6 @@ export class RecordvideoComponent implements OnInit {
   ngOnInit() {
   }
 
-
-
   goToNextStep(){
     this.router.navigate(['student/signUp/step3']);
   }
