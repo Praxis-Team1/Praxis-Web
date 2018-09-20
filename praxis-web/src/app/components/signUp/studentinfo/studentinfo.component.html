@@ -29,9 +29,7 @@
     <div class="row">
       <div class="col-12">
       <div class="main-login main-center">
-              <h5> Sign up </h5>
-
-
+              <h5> Sign up for Student</h5>
         <form class="" method="post" action="#">
           <div class="form-group">
             <label for="name" class="cols-sm-2 control-label">Your Name</label>
@@ -42,33 +40,34 @@
               </div>
             </div>
           </div>
-
           <div class="form-group">
-            <label for="email" class="cols-sm-2 control-label">Your Email</label>
-            <div class="cols-sm-10">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+         </div>
+          <div class="form-group">
+            <label for="name" class="cols-sm-2 control-label">Birthdate</label>
+            <div class="cols-sm-14">
               <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
+                <input id="date" type="date">
               </div>
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="username" class="cols-sm-2 control-label">Username</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="username" id="username"  placeholder="Enter your Username"/>
-              </div>
-            </div>
-          </div>
+
+          <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Praxis Type</label>
+             <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+             <option selected>Choose...</option>
+             <option value="1">Practice</option>
+             <option value="2">First Employment</option>
+             <option value="3">Learning purposes</option>
+          </select>
 
           <div class="form-group">
             <label for="password" class="cols-sm-2 control-label">Password</label>
             <div class="cols-sm-10">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
+                <input type="password" class="form-control" name="password" id="password" />
               </div>
             </div>
           </div>
@@ -78,13 +77,17 @@
             <div class="cols-sm-10">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                <input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>
+                <input type="password" class="form-control" name="confirm" id="confirm" />
               </div>
             </div>
           </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlTextarea2">Soft description</label>
+            <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3"></textarea>
+           </div>
         </form>
       </div>
     </div>
-    </div>
+  </div>
 </div>
-<p> First Step </p>

@@ -1,7 +1,5 @@
 <div class="row justify-content-md-center">
 
-
-
   <div class="col-8 mx-auto">
     <div class="container-fluid">
       <br /><br />
@@ -20,10 +18,20 @@
   <div class="col-3 mx-auto my-auto">
     <button type="button" class="btn btn-primary" (click)="goToPrevStep()">Prev</button>
   </div>
-  <div class="col-3 mx-auto my-auto">
+  <div class="col-0.5 mx-auto my-auto">
     <button type="button" class="btn btn-primary" (click)="goToNextStep()">Next</button>
   </div>
 </div>
 
+<div class="row">
+             <div class="col-md-4 mx-auto mt-5 recordvideo">
+                 <h4>Introduction video</h4>
+                 <h6>Tell us what are your expectations with PRAXIS and what value you can add to PSL in a video!</h6>
 
-<p> First Step </p>
+
+                 <div class="embed-responsive embed-responsive-16by9">
+                   <video #video class="video"></video>
+                </div>
+
+            </div>
+</div>
