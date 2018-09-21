@@ -1,19 +1,23 @@
+/* Active and after circle step */
 .multi-steps > li.is-active:before, .multi-steps > li.is-active ~ li:before {
   content: counter(stepNum);
   font-family: inherit;
   font-weight: 700;
 }
 
+/* Line after active steps */
 .multi-steps > li.is-active:after, .multi-steps > li.is-active ~ li:after {
   background-color: #00CCDD;
 }
 
+/* Progress bar */
 .multi-steps {
   display: table;
   table-layout: fixed;
   width: 100%;
 }
 
+/* Active and doed steps text */
 .multi-steps > li {
   counter-increment: stepNum;
   text-align: center;
@@ -55,24 +59,34 @@
   z-index: -1;
 }
 
+/* Line after final step */
 .multi-steps > li:last-child:after {
   display: none;
 }
 
+/* Active step circle */
 .multi-steps > li.is-active:before {
   background-color: #819FF7;
   border-color: #2E64FE;
 }
 
+/* Text next steps */
 .multi-steps > li.is-active ~ li {
   color: #808080;
 }
 
+/* Nexts steps circle */
 .multi-steps > li.is-active ~ li:before {
   background-color: #ededed;
   border-color: #00FFFF;
 }
 
+/* Responsive progress bar */
+@media only screen and (max-width: 410px) {
+  .multi-steps > li.is-active ~ li {
+    display: none;
+  }
+}
 
 .recordvideo h4{
     text-align: center;
