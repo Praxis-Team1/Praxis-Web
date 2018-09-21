@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import { RouterModule, Router} from '@angular/router';
 
 
@@ -7,14 +7,30 @@ import { RouterModule, Router} from '@angular/router';
   templateUrl: './recordvideo.component.html',
   styleUrls: ['./recordvideo.component.css']
 })
-export class RecordvideoComponent implements OnInit {
+export class RecordvideoComponent implements AfterViewInit {
 
-  constructor(private router: Router) { }
+
 
   ngOnInit() {
   }
 
+  private stream: MediaStream;
+ private recordRTC: any;
 
+ @ViewChild('video') video;
+
+ constructor(private router: Router) {
+   console.log('hola xd');
+ }
+
+ ngAfterViewInit() {
+   // set the initial state of the video
+   let video:HTMLVideoElement = this.video.nativeElement;
+   video.muted = false;
+   video.controls = true;
+   video.autoplay = false;
+
+ }
 
   goToNextStep(){
     this.router.navigate(['student/signUp/step3']);
@@ -22,9 +38,7 @@ export class RecordvideoComponent implements OnInit {
 
 
   goToPrevStep(){
-
-    this.router.navigate(['student/signUp/step1']);
-
+    this.router.navigate(['student/signUp/step1'])
   }
 
 
