@@ -125,10 +125,7 @@ export class RecordvideoComponent implements AfterViewInit {
 
     let recordRTC = this.recordRTC;
     var recordedBlob = recordRTC.getBlob();
-  //  console.log(recordedBlob);
 
-//    console.log("url  video oe : ",this.urlVideoRecorded );
-    // this.router.navigate(['/product-list'], { queryParams: { page: pageNum } });
     this.router.navigate(['student/signUp/step3'], { queryParams: { urlvideo: this.urlVideoRecorded, mensaje: "hola" } }).then(
         data=>{
           console.log(data);

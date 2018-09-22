@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterModule, Router, ActivatedRoute} from '@angular/router';
-
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { RouterModule, Router, ActivatedRoute } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-validatedata',
   templateUrl: './validatedata.component.html',
@@ -12,21 +12,37 @@ export class ValidatedataComponent implements OnInit {
 
   private mensaje: string;
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute, private sanitizer:  DomSanitizer) { }
+  @ViewChild('video') video;
 
-  async ngOnInit() {
 
+  public getSantizeUrl(url: string) {
+    return this.sanitizer.bypassSecurityTrustUrl(url);
+  }
+
+
+  ngOnInit() {
      this.route
      .queryParams
      .subscribe(params => {
-
-       this.urlvideo += params['urlvideo'];
-       console.log(this.urlvideo);
-       
-    //   console.log(this.mensaje);
+       this.urlvideo = params['urlvideo'];
      });
+  }
+
+
+
+  ngAfterViewInit() {
+    // set the initial state of the video
+    let video:HTMLVideoElement = this.video.nativeElement;
+    video.muted = false;
+    video.controls = true;
+    video.autoplay = false;
 
   }
+
+
+
+
 
   goToNextStep(){
     //Falta.
