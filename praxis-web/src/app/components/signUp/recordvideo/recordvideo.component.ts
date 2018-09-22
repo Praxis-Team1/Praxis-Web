@@ -81,32 +81,15 @@ export class RecordvideoComponent implements AfterViewInit {
 
 
  }
-  //Aca esta el problema con la renderizacion.
+
  startRecording() {
-   let mediaConstraints = {
-     video: {
-       mandatory: {
-         minWidth: 1280,
-         minHeight: 720
-       }
-     }, audio: true
+   let mediaContraints = {
+     video: true,
+     audio: true
    };
 
-
-   let mediaContraints2 = {
-     mandatory: {
-       minWidth: 1280,
-       minHeight: 720
-     }
-
-   };
-   navigator.mediaDevices.getUserMedia({ video: true , audio: true}).then(
+  navigator.mediaDevices.getUserMedia(mediaContraints).then(
      this.successCallback.bind(this), this.errorCallback.bind(this));
-
-   /*navigator.mediaDevices
-     .getUserMedia(mediaConstraints)
-     .then(this.successCallback.bind(this), this.errorCallback.bind(this));
-*/
  }
 
  stopRecording() {
@@ -122,13 +105,12 @@ export class RecordvideoComponent implements AfterViewInit {
  }
 
  goToNextStep(){
-
     let recordRTC = this.recordRTC;
     var recordedBlob = recordRTC.getBlob();
 
-    this.router.navigate(['student/signUp/step3'], { queryParams: { urlvideo: this.urlVideoRecorded, mensaje: "hola" } }).then(
+    this.router.navigate(['student/signUp/step3'], { queryParams: { urlvideo: this.urlVideoRecorded}}).then(
         data=>{
-          console.log(data);
+          console.log("Data ", data);
         },
         error=>{
           console.log("El error es " , error);
@@ -137,6 +119,8 @@ export class RecordvideoComponent implements AfterViewInit {
   }
 
   saveVideo(){
+
+
   }
 
   goToPrevStep(){
