@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
-import { RouterModule, Router} from '@angular/router';
+import { RouterModule, Router, ActivatedRoute} from '@angular/router';
 import * as RecordRTC from 'recordrtc/RecordRTC.min';
 
 
@@ -20,11 +20,19 @@ export class RecordvideoComponent implements AfterViewInit {
   public urlArray: string[];
 
 
-
+  private student;
 
  @ViewChild('video') video;
 
- constructor(private router: Router) {
+ constructor(private router: Router, private route: ActivatedRoute) {
+
+   this.route
+   .queryParams
+   .subscribe(params => {
+     this.student= params['student'];
+
+     console.log(this.student.password);
+   });
 
  }
 
@@ -85,9 +93,6 @@ export class RecordvideoComponent implements AfterViewInit {
    if(this.urlVideoRecorded != undefined){
       this.urlArray.push(this.urlVideoRecorded);
    }
-
-
-
  }
 
  startRecording() {

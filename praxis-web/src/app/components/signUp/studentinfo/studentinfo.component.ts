@@ -1,6 +1,6 @@
 import { Component, OnInit , ViewChild,} from '@angular/core';
 import { RouterModule, Router} from '@angular/router';
-
+import { Student } from '../../../schemas/student';
 
 @Component({
   selector: 'app-studentinfo',
@@ -9,27 +9,28 @@ import { RouterModule, Router} from '@angular/router';
 })
 export class StudentinfoComponent implements OnInit {
 
-  @ViewChild('videoPlayer') videoplayer: any;
+  private verificationPass: string;
 
-
-  videoValidate: any;
-
-
+  private student;
 
   constructor(private router: Router) {
-
+    this.student = new Student();
   }
 
   ngOnInit() {
   }
 
   goToNextStep(){
-      this.router.navigate(['student/signUp/step2']);
+    console.log(this.student);
+
+    this.router.navigate(['student/signUp/step2'], { queryParams: { student: this.student }}).then(
+        data=>{
+          console.log("Data ", data);
+        },
+        error=>{
+          console.log("El error es " , error);
+        }
+    );
   }
 
-
-
-  toggleVideo(event: any) {
-      this.videoplayer.nativeElement.play();
-  }
 }

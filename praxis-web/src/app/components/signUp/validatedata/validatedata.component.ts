@@ -46,7 +46,7 @@ export class ValidatedataComponent implements OnInit {
 
   goToNextStep(){
     //Falta.
-  //  this.router.navigate(['student/signUp/step3']);
+   this.router.navigate(['student/signUp/step4']);
   }
 
 
