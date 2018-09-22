@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import { RouterModule, Router, ActivatedRoute} from '@angular/router';
 import * as RecordRTC from 'recordrtc/RecordRTC.min';
-
+import { helperService } from '../../../services/helperService';
 
 @Component({
   selector: 'app-recordvideo',
@@ -16,24 +16,13 @@ export class RecordvideoComponent implements AfterViewInit {
   private stream: MediaStream;
   private recordRTC: any;
   private urlVideoRecorded: any;
-
-  public urlArray: string[];
-
-
   private student;
 
  @ViewChild('video') video;
 
- constructor(private router: Router, private route: ActivatedRoute) {
+ constructor(private router: Router,private helperService: helperService) {
 
-   this.route
-   .queryParams
-   .subscribe(params => {
-     this.student= params['student'];
-
-     console.log(this.student.password);
-   });
-
+    console.log("En video " , this.helperService.getStudentOfSignUp() );
  }
 
  ngAfterViewInit() {
@@ -90,9 +79,6 @@ export class RecordvideoComponent implements AfterViewInit {
 
    this.urlVideoRecorded = video.src;
 
-   if(this.urlVideoRecorded != undefined){
-      this.urlArray.push(this.urlVideoRecorded);
-   }
  }
 
  startRecording() {
@@ -121,6 +107,12 @@ export class RecordvideoComponent implements AfterViewInit {
     let recordRTC = this.recordRTC;
     var recordedBlob = recordRTC.getBlob();
 
+    //No se si es necesario cambiar esto.
+
+    //Aca actualizamos la url.
+    this.helperService.studentSignUp.urlvideo = this.urlVideoRecorded;
+
+
     this.router.navigate(['student/signUp/step3'], { queryParams: { urlvideo: this.urlVideoRecorded}}).then(
         data=>{
           console.log("Data ", data);
@@ -129,13 +121,6 @@ export class RecordvideoComponent implements AfterViewInit {
           console.log("El error es " , error);
         }
     );
-  }
-
-  seeArray(){
-
-    for (var i = 0; i < this.urlArray.length; i++)
-        console.log((i+1) + ": " + this.urlArray[i]);
-
   }
 
   goToPrevStep(){

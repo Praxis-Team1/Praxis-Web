@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
+import { helperService } from '../../../services/helperService';
+
 @Component({
   selector: 'app-validatedata',
   templateUrl: './validatedata.component.html',
@@ -12,7 +14,7 @@ export class ValidatedataComponent implements OnInit {
 
   private mensaje: string;
 
-  constructor(private router: Router, private route: ActivatedRoute, private sanitizer:  DomSanitizer) { }
+  constructor(private router: Router, private route: ActivatedRoute, private sanitizer:  DomSanitizer, private helperService: helperService) { }
   @ViewChild('video') video;
 
 
@@ -27,6 +29,9 @@ export class ValidatedataComponent implements OnInit {
      .subscribe(params => {
        this.urlvideo = params['urlvideo'];
      });
+
+
+     console.log("En validate data " , this.helperService.getStudentOfSignUp());
   }
 
 

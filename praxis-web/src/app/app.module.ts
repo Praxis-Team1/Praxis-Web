@@ -10,11 +10,16 @@ import { RecordvideoComponent } from './components/signUp/recordvideo/recordvide
 import { ValidatedataComponent } from './components/signUp/validatedata/validatedata.component';
 import { LoginComponent } from './components/login/login.component';
 import { InitialNavbarComponent } from './components/shared/initial-navbar/initial-navbar.component';
+import { FinishSignUpComponent } from './components/signUp/finish-sign-up/finish-sign-up.component';
+
 
 //Routes.
-
 import { ROUTES } from './app.routes';
-import { FinishSignUpComponent } from './components/signUp/finish-sign-up/finish-sign-up.component';
+
+
+//Services
+import { helperService } from './services/helperService';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +37,10 @@ import { FinishSignUpComponent } from './components/signUp/finish-sign-up/finish
     FormsModule
 
   ],
-  providers: [],
+  providers: [
+       helperService
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
