@@ -75,6 +75,12 @@
   color: #808080;
 }
 
+/* Nexts steps circle */
+.multi-steps > li.is-active ~ li:before {
+  background-color: #ededed;
+  border-color: #00FFFF;
+}
+
 /* Responsive progress bar */
 @media only screen and (max-width: 410px) {
   .multi-steps > li.is-active ~ li {

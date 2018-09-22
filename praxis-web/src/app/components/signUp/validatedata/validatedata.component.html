@@ -1,5 +1,5 @@
+<!-- Progress bar -->
 <div class="row justify-content-md-center">
-
   <div class="col-12 mx-auto">
     <div class="container-fluid">
       <br /><br />
@@ -11,10 +11,9 @@
       </ul>
     </div>
   </div>
-
 </div>
 
-
+<!-- Buttons for steps -->
 <div class="row justify-content-md-center">
   <div class="col-3 mx-auto my-auto">
     <button type="button" class="btn btn-primary" (click)="goToPrevStep()">Prev</button>
@@ -24,5 +23,87 @@
   </div>
 </div>
 
+<div class="container">
 
-<p> Third Step Validate data</p>
+  <div class="row justify-content-md-center">
+      <h4>Validate the Information</h4>
+  </div>
+
+  <div class="row justify-content-md-center">
+    <h6>This its the data you are about to submit to PRAXIS, please review it.</h6>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 padding-0">
+      <div class="main-login main-center">
+        <h5> Personal Data</h5>
+        <form class="" method="post" action="#">
+
+          <div class="form-group">
+            <label for="name" class="cols-sm-2 control-label">Your Name</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" name="name" id="name"  placeholder=""/>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
+
+          <div class="form-group">
+            <label for="name" class="cols-sm-2 control-label">Birthdate</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <input id="date" type="date">
+              </div>
+            </div>
+          </div>
+
+          <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Praxis Type</label>
+          <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+            <option selected>Choose...</option>
+            <option value="1">Practice</option>
+            <option value="2">First Employment</option>
+            <option value="3">Learning purposes</option>
+          </select>
+
+          <div class="form-group">
+            <label for="password" class="cols-sm-2 control-label">Password</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                <input type="password" class="form-control" name="password" id="password" />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                <input type="password" class="form-control" name="confirm" id="confirm" />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlTextarea2">Soft description</label>
+            <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3"></textarea>
+          </div>
+
+        </form>
+      </div>
+    </div>
+    <div class="col-md-8 mx-auto mt-5 recordvideo padding-0">
+      <h4>Introduction video</h4>
+      <div class="embed-responsive embed-responsive-16by9">
+        <video #video class="video"></video>
+      </div>
+    </div>
+  </div>
+</div>

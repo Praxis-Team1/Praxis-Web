@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { RouterModule, Router} from '@angular/router';
 
 @Component({
@@ -12,6 +12,17 @@ export class ValidatedataComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  @ViewChild('video') video;
+
+  ngAfterViewInit() {
+    // set the initial state of the video
+    let video:HTMLVideoElement = this.video.nativeElement;
+    video.muted = false;
+    video.controls = true;
+    video.autoplay = false;
+
+   }
 
   goToNextStep(){
     //Falta.
