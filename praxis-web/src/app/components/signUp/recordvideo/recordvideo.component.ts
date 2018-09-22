@@ -15,9 +15,11 @@ export class RecordvideoComponent implements AfterViewInit {
 
   private stream: MediaStream;
   private recordRTC: any;
-
-
   private urlVideoRecorded: any;
+
+  public urlArray: string[];
+
+
 
 
  @ViewChild('video') video;
@@ -77,7 +79,13 @@ export class RecordvideoComponent implements AfterViewInit {
    console.log("El src " , video.src);
    console.log("El blob " , recordedBlob);
 
+
    this.urlVideoRecorded = video.src;
+
+   if(this.urlVideoRecorded != undefined){
+      this.urlArray.push(this.urlVideoRecorded);
+   }
+
 
 
  }
@@ -88,7 +96,7 @@ export class RecordvideoComponent implements AfterViewInit {
      audio: true
    };
 
-  navigator.mediaDevices.getUserMedia(mediaContraints).then(
+    navigator.mediaDevices.getUserMedia(mediaContraints).then(
      this.successCallback.bind(this), this.errorCallback.bind(this));
  }
 
@@ -118,8 +126,10 @@ export class RecordvideoComponent implements AfterViewInit {
     );
   }
 
-  saveVideo(){
+  seeArray(){
 
+    for (var i = 0; i < this.urlArray.length; i++)
+        console.log((i+1) + ": " + this.urlArray[i]);
 
   }
 

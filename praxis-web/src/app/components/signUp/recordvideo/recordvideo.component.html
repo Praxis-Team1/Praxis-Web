@@ -33,11 +33,18 @@
                    <video #video class="video"></video>
                 </div>
 
+              <br>
                 <div class="row">
-                  <div class="col-xs-12">
-                    <button md-raised-button color="primary" (click)="startRecording()"> Record </button>
-                    <button md-raised-button color="primary" (click)="stopRecording()"> Stop</button>
-                  </div>
+                    <div class="col-xs-4 mx-auto">
+                      <button type="button" class="btn btn-primary" (click)="startRecording()" style="width: 120px"> Record </button>
+                    </div>
+                    <div class="col-xs-4 mx-auto">
+                    <button type="button" class="btn btn-primary" (click)="stopRecording()" style="width: 120px"> Stop</button>
+                    </div>
+                    <div class="col-xs-4 mx-auto">
+                    <button type="button" class="btn btn-primary" (click)="stopRecording()" style="width: 120px"> Save</button>
+                   </div>
+
                </div>
             </div>
 </div>
