@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import { RouterModule, Router} from '@angular/router';
 import * as RecordRTC from 'recordrtc/RecordRTC.min';
 
+
 @Component({
   selector: 'app-recordvideo',
   templateUrl: './recordvideo.component.html',
@@ -9,13 +10,15 @@ import * as RecordRTC from 'recordrtc/RecordRTC.min';
 })
 export class RecordvideoComponent implements AfterViewInit {
 
-
-
   ngOnInit() {
   }
 
   private stream: MediaStream;
   private recordRTC: any;
+
+
+  private urlVideoRecorded: any;
+
 
  @ViewChild('video') video;
 
@@ -32,7 +35,7 @@ export class RecordvideoComponent implements AfterViewInit {
 
   }
 
-   toggleControls() {
+  toggleControls() {
     let video: HTMLVideoElement = this.video.nativeElement;
     video.muted = !video.muted;
     video.controls = !video.controls;
@@ -65,11 +68,17 @@ export class RecordvideoComponent implements AfterViewInit {
    let video: HTMLVideoElement = this.video.nativeElement;
    let recordRTC = this.recordRTC;
    video.src = audioVideoWebMURL;
+
+
    this.toggleControls();
    var recordedBlob = recordRTC.getBlob();
    recordRTC.getDataURL(function (dataURL) { });
 
+   console.log("El src " , video.src);
    console.log("El blob " , recordedBlob);
+
+   this.urlVideoRecorded = video.src;
+
 
  }
   //Aca esta el problema con la renderizacion.
@@ -91,7 +100,6 @@ export class RecordvideoComponent implements AfterViewInit {
      }
 
    };
-
    navigator.mediaDevices.getUserMedia({ video: true , audio: true}).then(
      this.successCallback.bind(this), this.errorCallback.bind(this));
 
@@ -113,32 +121,26 @@ export class RecordvideoComponent implements AfterViewInit {
    this.recordRTC.save('video.mp4');
  }
 
-  goToNextStep(){
+ goToNextStep(){
 
-    console.log('hola');
-     let recordRTC = this.recordRTC;
+    let recordRTC = this.recordRTC;
     var recordedBlob = recordRTC.getBlob();
-    console.log(recordedBlob);
+  //  console.log(recordedBlob);
 
-    this.router.navigate(['student/signUp/step3']).then(
-
-    data=>{
-      console.log(data);
-    },
-    error=>{
-      console.log("El error es " , error);
-    }
-
-    )
-
-
+//    console.log("url  video oe : ",this.urlVideoRecorded );
+    // this.router.navigate(['/product-list'], { queryParams: { page: pageNum } });
+    this.router.navigate(['student/signUp/step3'], { queryParams: { urlvideo: this.urlVideoRecorded, mensaje: "hola" } }).then(
+        data=>{
+          console.log(data);
+        },
+        error=>{
+          console.log("El error es " , error);
+        }
+    );
   }
 
   saveVideo(){
-
-
   }
-
 
   goToPrevStep(){
     this.router.navigate(['student/signUp/step1'])

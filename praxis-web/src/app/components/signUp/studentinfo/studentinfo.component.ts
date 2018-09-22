@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ViewChild,} from '@angular/core';
 import { RouterModule, Router} from '@angular/router';
 
 
@@ -9,7 +9,16 @@ import { RouterModule, Router} from '@angular/router';
 })
 export class StudentinfoComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  @ViewChild('videoPlayer') videoplayer: any;
+
+
+  videoValidate: any;
+
+
+
+  constructor(private router: Router) {
+
+  }
 
   ngOnInit() {
   }
@@ -18,4 +27,9 @@ export class StudentinfoComponent implements OnInit {
       this.router.navigate(['student/signUp/step2']);
   }
 
+
+
+  toggleVideo(event: any) {
+      this.videoplayer.nativeElement.play();
+  }
 }

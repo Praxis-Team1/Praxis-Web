@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule, Router} from '@angular/router';
+import { RouterModule, Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-validatedata',
@@ -8,9 +8,24 @@ import { RouterModule, Router} from '@angular/router';
 })
 export class ValidatedataComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  private urlvideo: any;
 
-  ngOnInit() {
+  private mensaje: string;
+
+  constructor(private router: Router, private route: ActivatedRoute) { }
+
+  async ngOnInit() {
+
+     this.route
+     .queryParams
+     .subscribe(params => {
+
+       this.urlvideo += params['urlvideo'];
+       console.log(this.urlvideo);
+       
+    //   console.log(this.mensaje);
+     });
+
   }
 
   goToNextStep(){
