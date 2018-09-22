@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import { RouterModule, Router} from '@angular/router';
 import * as RecordRTC from 'recordrtc/RecordRTC.min';
 
+
 @Component({
   selector: 'app-recordvideo',
   templateUrl: './recordvideo.component.html',
@@ -9,13 +10,17 @@ import * as RecordRTC from 'recordrtc/RecordRTC.min';
 })
 export class RecordvideoComponent implements AfterViewInit {
 
-
-
   ngOnInit() {
   }
 
   private stream: MediaStream;
   private recordRTC: any;
+  private urlVideoRecorded: any;
+
+  public urlArray: string[];
+
+
+
 
  @ViewChild('video') video;
 
@@ -32,7 +37,7 @@ export class RecordvideoComponent implements AfterViewInit {
 
   }
 
-   toggleControls() {
+  toggleControls() {
     let video: HTMLVideoElement = this.video.nativeElement;
     video.muted = !video.muted;
     video.controls = !video.controls;
@@ -65,40 +70,34 @@ export class RecordvideoComponent implements AfterViewInit {
    let video: HTMLVideoElement = this.video.nativeElement;
    let recordRTC = this.recordRTC;
    video.src = audioVideoWebMURL;
+
+
    this.toggleControls();
    var recordedBlob = recordRTC.getBlob();
    recordRTC.getDataURL(function (dataURL) { });
 
+   console.log("El src " , video.src);
    console.log("El blob " , recordedBlob);
 
+
+   this.urlVideoRecorded = video.src;
+
+   if(this.urlVideoRecorded != undefined){
+      this.urlArray.push(this.urlVideoRecorded);
+   }
+
+
+
  }
-  //Aca esta el problema con la renderizacion.
+
  startRecording() {
-   let mediaConstraints = {
-     video: {
-       mandatory: {
-         minWidth: 1280,
-         minHeight: 720
-       }
-     }, audio: true
+   let mediaContraints = {
+     video: true,
+     audio: true
    };
 
-
-   let mediaContraints2 = {
-     mandatory: {
-       minWidth: 1280,
-       minHeight: 720
-     }
-
-   };
-
-   navigator.mediaDevices.getUserMedia({ video: true , audio: true}).then(
+    navigator.mediaDevices.getUserMedia(mediaContraints).then(
      this.successCallback.bind(this), this.errorCallback.bind(this));
-
-   /*navigator.mediaDevices
-     .getUserMedia(mediaConstraints)
-     .then(this.successCallback.bind(this), this.errorCallback.bind(this));
-*/
  }
 
  stopRecording() {
@@ -113,32 +112,26 @@ export class RecordvideoComponent implements AfterViewInit {
    this.recordRTC.save('video.mp4');
  }
 
-  goToNextStep(){
-
-    console.log('hola');
-     let recordRTC = this.recordRTC;
+ goToNextStep(){
+    let recordRTC = this.recordRTC;
     var recordedBlob = recordRTC.getBlob();
-    console.log(recordedBlob);
 
-    this.router.navigate(['student/signUp/step3']).then(
-
-    data=>{
-      console.log(data);
-    },
-    error=>{
-      console.log("El error es " , error);
-    }
-
-    )
-
-
+    this.router.navigate(['student/signUp/step3'], { queryParams: { urlvideo: this.urlVideoRecorded}}).then(
+        data=>{
+          console.log("Data ", data);
+        },
+        error=>{
+          console.log("El error es " , error);
+        }
+    );
   }
 
-  saveVideo(){
+  seeArray(){
 
+    for (var i = 0; i < this.urlArray.length; i++)
+        console.log((i+1) + ": " + this.urlArray[i]);
 
   }
-
 
   goToPrevStep(){
     this.router.navigate(['student/signUp/step1'])

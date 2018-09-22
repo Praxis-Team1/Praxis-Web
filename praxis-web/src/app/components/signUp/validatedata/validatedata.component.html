@@ -104,7 +104,7 @@
     <div class="col-md-8 mx-auto recordvideo padding-0">
       <h4>Introduction video</h4>
       <div class="embed-responsive embed-responsive-16by9">
-        <video #video class="video"></video>
+        <video id="video" #video [src]=getSantizeUrl(this.urlvideo)></video>
       </div>
     </div>
 
