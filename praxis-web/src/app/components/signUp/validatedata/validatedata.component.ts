@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { helperService } from '../../../services/helperService';
+import { Student } from '../../../schemas/student';
+
 
 @Component({
   selector: 'app-validatedata',
@@ -14,7 +16,14 @@ export class ValidatedataComponent implements OnInit {
 
   private mensaje: string;
 
-  constructor(private router: Router, private route: ActivatedRoute, private sanitizer:  DomSanitizer, private helperService: helperService) { }
+  private student: Student;
+
+
+  constructor(private router: Router, private route: ActivatedRoute, private sanitizer:  DomSanitizer, private helperService: helperService) {
+
+       this.student = this.helperService.getStudentOfSignUp();
+       
+  }
   @ViewChild('video') video;
 
 

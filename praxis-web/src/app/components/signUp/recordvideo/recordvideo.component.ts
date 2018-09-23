@@ -109,6 +109,8 @@ export class RecordvideoComponent implements AfterViewInit {
 
     //No se si es necesario cambiar esto.
 
+    console.log("En record video " ,this.helperService.studentSignUp.name);
+
     //Aca actualizamos la url.
     this.helperService.studentSignUp.urlvideo = this.urlVideoRecorded;
 
