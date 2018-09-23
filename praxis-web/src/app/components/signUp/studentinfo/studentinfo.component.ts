@@ -38,5 +38,4 @@ export class StudentinfoComponent implements OnInit {
         }
     );
   }
-
 }

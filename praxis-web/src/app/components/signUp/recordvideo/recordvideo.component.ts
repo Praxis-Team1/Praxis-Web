@@ -21,7 +21,7 @@ export class RecordvideoComponent implements AfterViewInit {
  @ViewChild('video') video;
 
  constructor(private router: Router,private helperService: helperService) {
-
+    this.student = this.helperService.getStudentOfSignUp();
     console.log("En video " , this.helperService.getStudentOfSignUp() );
  }
 
@@ -86,9 +86,8 @@ export class RecordvideoComponent implements AfterViewInit {
      video: true,
      audio: true
    };
-
-    navigator.mediaDevices.getUserMedia(mediaContraints).then(
-     this.successCallback.bind(this), this.errorCallback.bind(this));
+   navigator.mediaDevices.getUserMedia(mediaContraints).then(
+   this.successCallback.bind(this), this.errorCallback.bind(this));
  }
 
  stopRecording() {
@@ -115,7 +114,7 @@ export class RecordvideoComponent implements AfterViewInit {
     this.helperService.studentSignUp.urlvideo = this.urlVideoRecorded;
 
 
-    this.router.navigate(['student/signUp/step3'], { queryParams: { urlvideo: this.urlVideoRecorded}}).then(
+    this.router.navigate(['student/signUp/step3']).then(
         data=>{
           console.log("Data ", data);
         },
