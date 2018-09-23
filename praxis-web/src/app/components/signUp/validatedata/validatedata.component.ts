@@ -15,7 +15,7 @@ export class ValidatedataComponent implements OnInit {
   private mensaje: string;
   private student: Student;
 
-  constructor(private router: Router, private route: ActivatedRoute, private sanitizer:  DomSanitizer, private helperService: helperService) {
+  constructor(private router: Router, private sanitizer:  DomSanitizer, private helperService: helperService) {
     this.student = this.helperService.getStudentOfSignUp();
     console.log("En validate data " , this.student);
   }
