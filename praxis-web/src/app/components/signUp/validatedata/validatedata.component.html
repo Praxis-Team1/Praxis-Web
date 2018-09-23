@@ -106,7 +106,8 @@
     <div class="col-md-8 mx-auto recordvideo padding-0">
       <h4>Introduction video</h4>
       <div class="embed-responsive embed-responsive-16by9">
-        <video id="video" #video [src]=getSantizeUrl(this.urlvideo)></video>
+        <h1>{{this.student.name}}</h1>
+        <video id="video" #video [src]=getSantizeUrl(this.student.urlvideo)></video>
       </div>
     </div>
 
