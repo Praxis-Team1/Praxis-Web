@@ -2,7 +2,7 @@ import { Component, OnInit , ViewChild,} from '@angular/core';
 import { RouterModule, Router} from '@angular/router';
 import { Student } from '../../../schemas/student';
 import { helperService } from '../../../services/helperService';
-
+import { FormBuilder, FormGroup, FormControl,  Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-studentinfo',
@@ -12,11 +12,32 @@ import { helperService } from '../../../services/helperService';
 export class StudentinfoComponent implements OnInit {
 
   private verificationPass: string;
-
+  private rForm: FormGroup;
   private student;
 
-  constructor(private router: Router, private helperService: helperService) {
+
+  private errorNameMessage: string;
+  private errorEmailMessage: string;
+
+  private emailPattern: string = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
+
+//
+  constructor(private router: Router, private helperService: helperService,private formBuilder: FormBuilder) {
     this.student = new Student();
+
+    this.initializeErrorMessages();
+
+
+
+    console.log(this.errorNameMessage);
+
+     this.rForm = formBuilder.group({
+        "name": ["", Validators.required],
+        "email":["", [Validators.required, Validators.pattern(this.emailPattern)]],
+        "document": ["", Validators.required],
+        "semester": ["", Validators.required]
+     });
+
   }
 
   ngOnInit() {
@@ -29,7 +50,7 @@ export class StudentinfoComponent implements OnInit {
 
     this.helperService.setStudentOfSignUp(this.student);
 
-    this.router.navigate(['student/signUp/step2']).then(
+     this.router.navigate(['student/signUp/step2']).then(
         data=>{
           console.log("Data ", data);
         },
@@ -37,5 +58,14 @@ export class StudentinfoComponent implements OnInit {
           console.log("El error es " , error);
         }
     );
+  }
+
+
+  initializeErrorMessages(){
+
+    this.errorNameMessage = "Name is required";
+
+
+
   }
 }
