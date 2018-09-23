@@ -17,6 +17,7 @@ export class ValidatedataComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute, private sanitizer:  DomSanitizer, private helperService: helperService) {
     this.student = this.helperService.getStudentOfSignUp();
+    console.log("En validate data " , this.student);
   }
 
   @ViewChild('video') video;
@@ -26,13 +27,6 @@ export class ValidatedataComponent implements OnInit {
   }
 
   ngOnInit() {
-     this.route
-     .queryParams
-     .subscribe(params => {
-       this.student.name = 'pepito';
-       this.urlvideo = params[student.urlvideo];
-     });
-     console.log("En validate data " , this.student.name);
   }
 
   ngAfterViewInit() {
