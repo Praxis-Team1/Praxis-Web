@@ -14,9 +14,12 @@ export class httpService {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
+
   };
 
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient) {
+
+  }
 
 
   getMessage() {
