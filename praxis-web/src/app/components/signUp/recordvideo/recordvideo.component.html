@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
 <div class="row justify-content-md-center">
 
   <div class="col-12 mx-auto">
@@ -12,11 +14,12 @@
     </div>
   </div>
 
+
 </div>
 
 <div class="row justify-content-md-center">
   <div class="col-3 mx-auto my-auto">
-    <button type="button" class="btn btn-primary" (click)="goToPrevStep()">Prev</button>
+    <button type="button" class="btn btn-primary" (click)="goToPrevStep()">Previous</button>
   </div>
   <div class="col-0.5 mx-auto my-auto">
     <button type="button" class="btn btn-primary" (click)="goToNextStep()">Next</button>
@@ -33,16 +36,18 @@
                    <video #video class="video"></video>
                 </div>
 
+              <br>
                 <div class="row">
-                  <div class="col-xs-12">
-                    <button md-raised-button color="primary" (click)="startRecording()"> Record </button>
-                    <button md-raised-button color="primary" (click)="stopRecording()"> Stop</button>
-                  </div>
+                    <div class="col-xs-4 mx-auto">
+                      <div class="btn-group" role="group" aria-label="Basic example">
+
+                        <button type="button" class="btn btn-success" (click)="startRecording()" style="width: 80px"  > <i class="fas fa-video"></i></button>
+                        <button type="button" class="btn btn-danger" (click)="stopRecording()" style="width: 80px"> <i class="fas fa-stop"></i> </button>
+
+                      </div>
+
+                    </div>
+
                </div>
-
-
-
-
-
             </div>
 </div>

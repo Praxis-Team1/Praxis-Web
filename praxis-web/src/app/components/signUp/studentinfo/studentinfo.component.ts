@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ViewChild,} from '@angular/core';
 import { RouterModule, Router} from '@angular/router';
+import { Student } from '../../../schemas/student';
+import { helperService } from '../../../services/helperService';
 
 
 @Component({
@@ -9,13 +11,32 @@ import { RouterModule, Router} from '@angular/router';
 })
 export class StudentinfoComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  private verificationPass: string;
+
+  private student;
+
+  constructor(private router: Router, private helperService: helperService) {
+    this.student = new Student();
+  }
 
   ngOnInit() {
   }
 
   goToNextStep(){
-      this.router.navigate(['student/signUp/step2']);
+    //console.log(this.student);
+
+    //Es necesario los validators.
+
+    this.helperService.setStudentOfSignUp(this.student);
+
+    this.router.navigate(['student/signUp/step2']).then(
+        data=>{
+          console.log("Data ", data);
+        },
+        error=>{
+          console.log("El error es " , error);
+        }
+    );
   }
 
 }
