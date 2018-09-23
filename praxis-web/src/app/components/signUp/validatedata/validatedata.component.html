@@ -16,10 +16,10 @@
 <!-- Buttons for steps -->
 <div class="row justify-content-md-center">
   <div class="col-3 mx-auto my-auto">
-    <button type="button" class="btn btn-primary" (click)="goToPrevStep()">Prev</button>
+    <button type="button" class="btn btn-primary" (click)="goToPrevStep()">Previous</button>
   </div>
   <div class="col-0.5 mx-auto my-auto">
-    <button type="button" class="btn btn-primary" (click)="goToNextStep()">Next</button>
+    <button type="button" class="btn btn-primary" (click)="goToNextStep()">Submit</button>
   </div>
 </div>
 
@@ -34,6 +34,7 @@
   </div>
 
   <div class="row">
+
     <div class="col-md-4 padding-0">
       <div class="main-login main-center">
         <h5> Personal Data</h5>
@@ -99,11 +100,13 @@
         </form>
       </div>
     </div>
-    <div class="col-md-8 mx-auto mt-5 recordvideo padding-0">
+
+    <div class="col-md-8 mx-auto recordvideo padding-0">
       <h4>Introduction video</h4>
       <div class="embed-responsive embed-responsive-16by9">
-        <video #video class="video"></video>
+        <video id="video" #video [src]=getSantizeUrl(this.urlvideo)></video>
       </div>
     </div>
+
   </div>
 </div>
