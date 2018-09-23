@@ -10,15 +10,11 @@ export class helperService {
    public studentSignUp: Student;
 
    setStudentOfSignUp(student: Student){
-
       this.studentSignUp = student;
-
-
    }
 
 
-   getStudentOfSignUp(){
-
+   getStudentOfSignUp(): Student{
       return this.studentSignUp;
    }
 
