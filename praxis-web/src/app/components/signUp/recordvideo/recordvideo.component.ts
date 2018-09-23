@@ -96,6 +96,13 @@ export class RecordvideoComponent implements AfterViewInit {
    let stream = this.stream;
    stream.getAudioTracks().forEach(track => track.stop());
    stream.getVideoTracks().forEach(track => track.stop());
+
+
+   let blob = this.recordRTC.getBlob();
+
+   let fileObject = new File([blob], "", {
+      type: 'video/webm'
+   });
  }
 
  download() {

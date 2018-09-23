@@ -31,20 +31,25 @@
       <div class="col-12">
       <div class="main-login main-center">
         <h5> Sign up for Student</h5>
-        <form class="" method="post" action="#">
+        <form [formGroup]="rForm">
 
           <div class="form-group">
             <label for="name" class="control-label">Your Name</label>
             <div class="input-group" id="name">
               <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-              <input type="string" [(ngModel)]="this.student.name" class="form-control" name="name" />
+              <input type="string" [(ngModel)]="this.student.name" class="form-control" name="name" formControlName="name" />
+              <div class="alert alert-danger" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched">
+                         <ul class="help-block ">
+                              <li> Name is required</li>
+                         </ul>
+              </div>
             </div>
           </div>
 
          <div class="row">
            <div class="col-sm-4">
               <label class="my-1 mr-2" for="documentType">Document Type</label>
-              <select class="custom-select my-1 mr-sm-2" [(ngModel)]="this.student.documentType" name="documentType" id="documentType">
+              <select class="custom-select my-1 mr-sm-2" [(ngModel)]="this.student.documentType" name="documentType" id="documentType" [ngModelOptions]="{standalone: true}">
                  <option selected disabled>Choose...</option>
                  <option value="C.C.">C.C.</option>
                  <option value="C.E.">C.E.</option>
@@ -54,7 +59,12 @@
              <label for="document" class="cols-sm-2 control-label">Document Number</label>
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                <input type="number" [(ngModel)]="this.student.documentNumber" class="form-control" name="document" id="document" />
+                <input type="number" [(ngModel)]="this.student.documentNumber" class="form-control" name="document" id="document"  formControlName="document"/>
+                <div class="alert alert-danger" *ngIf="!rForm.controls['document'].valid && rForm.controls['document'].touched">
+                           <ul class="help-block ">
+                                <li> Document is required</li>
+                           </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -62,19 +72,25 @@
           <div class="form-group">
             <label for="email">Email address</label>
             <div class="input-group">
-                <input type="email"  [(ngModel)]="this.student.email" class="form-control" name="email" id="email" aria-describedby="emailHelp">
+                <input type="email"  [(ngModel)]="this.student.email" class="form-control" name="email" id="email" aria-describedby="emailHelp" formControlName="email">
+
+                <div class="alert alert-danger" *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched">
+                           <ul class="help-block ">
+                                <li> Invalid email </li>
+                           </ul>
+                </div>
             </div>
          </div>
 
           <div class="form-group">
             <label for="date" class="control-label">Birthdate</label>
             <div>
-              <input type="date" [(ngModel)]="this.student.birthdate" name="date" id="date">
+              <input type="date" [(ngModel)]="this.student.birthdate" name="date" id="date" [ngModelOptions]="{standalone: true}">
             </div>
           </div>
 
           <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Praxis Type</label>
-          <select class="custom-select my-1 mr-sm-2" [(ngModel)]="this.student.typeOfPraxis" name="PraxisType" id="typeOfPraxis">
+          <select class="custom-select my-1 mr-sm-2" [(ngModel)]="this.student.typeOfPraxis" name="PraxisType" id="typeOfPraxis" [ngModelOptions]="{standalone: true}">
              <option selected disabled>Choose...</option>
              <option value="Practice">Practice</option>
              <option value="First Employment">First Employment</option>
@@ -85,7 +101,7 @@
             <label for="password" class="control-label">Password</label>
             <div class="input-group" id="password">
               <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-              <input type="password" [(ngModel)]="this.student.password" class="form-control" name="password"/>
+              <input type="password" [(ngModel)]="this.student.password" class="form-control" name="password" [ngModelOptions]="{standalone: true}"/>
             </div>
           </div>
 
@@ -93,12 +109,12 @@
             <label for="confirm" class="control-label">Confirm Password</label>
             <div class="input-group" id="confirm">
               <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-              <input type="password" [(ngModel)]="this.verificationPass" class="form-control" name="confirm"/>
+              <input type="password" [(ngModel)]="this.verificationPass" class="form-control" name="confirm" [ngModelOptions]="{standalone: true}"/>
             </div>
           </div>
 
           <label class="my-1 mr-2" for="university">University</label>
-          <select class="custom-select my-1 mr-sm-2" [(ngModel)]="this.student.university" name="university" id="university">
+          <select class="custom-select my-1 mr-sm-2" [(ngModel)]="this.student.university" name="university" id="university" [ngModelOptions]="{standalone: true}">
             <option selected disabled>Please choose an university...</option>
             <option value="UNal">Universidad Nacional de Colombia</option>
           </select>
@@ -106,14 +122,18 @@
           <div class="form-group">
             <label for="semester" class="control-label">Semester</label>
               <div class="input-group" id="semester">
-                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                <input type="semester" [(ngModel)]="this.student.semester" class="form-control" name="semester" />
+                <input type="number" [(ngModel)]="this.student.semester" class="form-control" name="semester" formControlName="semester" />
+                <div class="alert alert-danger" *ngIf="!rForm.controls['semester'].valid && rForm.controls['semester'].touched">
+                           <ul class="help-block ">
+                                <li> Missing a valid semester </li>
+                           </ul>
+                </div>
             </div>
           </div>
 
           <div class="form-group">
             <label for="biography">Soft description</label>
-            <textarea class="form-control rounded-0" [(ngModel)]="this.student.biography" name="biography" id="biography" rows="3"></textarea>
+            <textarea class="form-control rounded-0" [(ngModel)]="this.student.biography" name="biography" id="biography" rows="3" [ngModelOptions]="{standalone: true}"></textarea>
            </div>
         </form>
       </div>
