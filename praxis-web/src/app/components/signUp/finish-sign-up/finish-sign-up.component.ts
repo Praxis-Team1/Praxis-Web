@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
+import { Student } from '../../../schemas/student';
+import { helperService } from '../../../services/helperService';
+
 @Component({
   selector: 'app-finish-sign-up',
   templateUrl: './finish-sign-up.component.html',
@@ -7,7 +10,14 @@ import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 })
 export class FinishSignUpComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  private student;
+
+
+  constructor(private router: Router,private helperService: helperService) {
+    this.student = this.helperService.getStudentOfSignUp();
+    console.log("En el paso final" , this.helperService.getStudentOfSignUp() );
+
+  }
 
   ngOnInit() {
   }

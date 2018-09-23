@@ -122,16 +122,12 @@
           <div class="form-group">
             <label for="semester" class="control-label">Semester</label>
               <div class="input-group" id="semester">
-                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
                 <input type="number" [(ngModel)]="this.student.semester" class="form-control" name="semester" formControlName="semester" />
-
                 <div class="alert alert-danger" *ngIf="!rForm.controls['semester'].valid && rForm.controls['semester'].touched">
                            <ul class="help-block ">
                                 <li> Missing a valid semester </li>
                            </ul>
                 </div>
-
-
             </div>
           </div>
 

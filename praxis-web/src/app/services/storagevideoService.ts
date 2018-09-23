@@ -3,10 +3,9 @@ import { Student } from '../schemas/student';
 
 
 @Injectable()
-export class helperService {
+export class storageVideoService {
 
-   public studentSignUp: Student= new Student();
-
+   public studentSignUp: Student;
 
    setStudentOfSignUp(student: Student){
       this.studentSignUp = student;
