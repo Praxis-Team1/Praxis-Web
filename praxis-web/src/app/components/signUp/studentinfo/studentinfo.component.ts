@@ -2,6 +2,8 @@ import { Component, OnInit , ViewChild,} from '@angular/core';
 import { RouterModule, Router} from '@angular/router';
 import { Student } from '../../../schemas/student';
 import { helperService } from '../../../services/helperService';
+import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule  } from '@angular/forms';
+
 
 
 @Component({
@@ -10,9 +12,10 @@ import { helperService } from '../../../services/helperService';
   styleUrls: ['./studentinfo.component.css']
 })
 export class StudentinfoComponent implements OnInit {
-
   private verificationPass: string;
-
+  text = 'Sign up page';
+  submitted = false;
+  SignUpForm: FormGroup;
   private student;
 
   constructor(private router: Router, private helperService: helperService) {
@@ -23,6 +26,7 @@ export class StudentinfoComponent implements OnInit {
   }
 
   goToNextStep(){
+    this.submitted = true;
     //console.log(this.student);
 
     //Es necesario los validators.
