@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 <div class="row justify-content-md-center">
-
   <div class="col-12 mx-auto">
     <div class="container-fluid">
       <br /><br />
@@ -13,8 +12,6 @@
       </ul>
     </div>
   </div>
-
-
 </div>
 
 <div class="row justify-content-md-center">
@@ -27,27 +24,20 @@
 </div>
 
 <div class="row">
-             <div class="col-md-4 mx-auto mt-5 recordvideo">
-                 <h4>Introduction video</h4>
-                 <h6>Tell us what are your expectations with PRAXIS and what value you can add to PSL in a video!</h6>
-
-
-                 <div class="embed-responsive embed-responsive-21by9">
-                   <video #video class="video"></video>
-                </div>
-
-              <br>
-                <div class="row">
-                    <div class="col-xs-4 mx-auto">
-                      <div class="btn-group" role="group" aria-label="Basic example">
-
-                        <button type="button" class="btn btn-success" (click)="startRecording()" style="width: 80px"  > <i class="fas fa-video"></i></button>
-                        <button type="button" class="btn btn-danger" (click)="stopRecording()" style="width: 80px"> <i class="fas fa-stop"></i> </button>
-
-                      </div>
-
-                    </div>
-
-               </div>
-            </div>
+  <div class="col-md-8 mx-auto mt-4 recordvideo">
+    <h4>Introduction video</h4>
+    <h6>Tell us what are your expectations with PRAXIS and what value you can add to PSL in a video!</h6>
+    <div class="embed-responsive embed-responsive-16by9">
+      <video #video class="video"></video>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-4 mx-auto">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-success" (click)="startRecording()" style="width: 80px"  > <i class="fas fa-video"></i></button>
+          <button type="button" class="btn btn-danger" (click)="stopRecording()" style="width: 80px"> <i class="fas fa-stop"></i> </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

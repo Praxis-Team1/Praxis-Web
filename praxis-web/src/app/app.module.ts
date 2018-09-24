@@ -1,7 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+import { BootstrapAlertModule } from 'ngx-bootstrap-alert-service';
+
 
 
 import { AppComponent } from './app.component';
@@ -19,6 +23,9 @@ import { ROUTES } from './app.routes';
 
 //Services
 import { helperService } from './services/helperService';
+import { storageVideoService } from './services/storagevideoService';
+import { httpService } from './services/httpService';
+
 
 @NgModule({
   declarations: [
@@ -34,11 +41,17 @@ import { helperService } from './services/helperService';
     BrowserModule,
     RouterModule,
     RouterModule.forRoot(ROUTES),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpModule,
+    HttpClientModule,
+    BootstrapAlertModule
 
   ],
   providers: [
-       helperService
+    helperService,
+    storageVideoService,
+    httpService
 
   ],
   bootstrap: [AppComponent]
