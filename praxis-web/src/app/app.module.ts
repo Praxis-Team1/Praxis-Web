@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { BootstrapAlertModule } from 'ngx-bootstrap-alert-service';
 
@@ -35,7 +35,7 @@ import { httpService } from './services/httpService';
     ValidatedataComponent,
     LoginComponent,
     InitialNavbarComponent,
-    FinishSignUpComponent
+    FinishSignUpComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +45,8 @@ import { httpService } from './services/httpService';
     ReactiveFormsModule,
     HttpModule,
     HttpClientModule,
-    BootstrapAlertModule
+    BootstrapAlertModule,
+   // HttpClient
 
   ],
   providers: [

@@ -14,16 +14,18 @@ import { BootstrapAlertService } from 'ngx-bootstrap-alert-service';
 })
 export class StudentinfoComponent implements OnInit {
 
-  private verificationPass: string;
-  private rForm: FormGroup;
+  public verificationPass: string;
+  public rForm: FormGroup;
   private student;
+  text = 'Sign up page';
+  submitted = false;
 
 
 
   private emailPattern: string = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
 
 //
-  constructor(private router: Router, private helperService: helperService,private formBuilder: FormBuilder, private http: httpService, private bootstrapAlertService: BootstrapAlertService) {
+  constructor(public router: Router, public helperService: helperService,public formBuilder: FormBuilder, public http: httpService, private bootstrapAlertService: BootstrapAlertService) {
 
     this.student = this.helperService.getStudentOfSignUp();
 
@@ -65,6 +67,7 @@ export class StudentinfoComponent implements OnInit {
   }
 
   goToNextStep(){
+    this.submitted = true;
     //console.log(this.student);
 
     //Es necesario los validators.
