@@ -25,6 +25,7 @@ import { ROUTES } from './app.routes';
 import { helperService } from './services/helperService';
 import { storageVideoService } from './services/storagevideoService';
 import { httpService } from './services/httpService';
+import { MainmenuNavbarComponent } from './components/shared/mainmenu-navbar/mainmenu-navbar.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { httpService } from './services/httpService';
     LoginComponent,
     InitialNavbarComponent,
     FinishSignUpComponent,
+    MainmenuNavbarComponent,
   ],
   imports: [
     BrowserModule,

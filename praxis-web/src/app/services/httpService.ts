@@ -27,5 +27,13 @@ export class httpService {
   }
 
 
+  /*Aqui debeberia ir la peticion para hacer el login, pero pondremos algo de prueba*/
+  /*Se simula el backend */
+
+  login(email: String, password: String): boolean{
+        if(email== "test@unal.edu.co" && password == "test"){
+              return true;
+        }
+  }
 
 }

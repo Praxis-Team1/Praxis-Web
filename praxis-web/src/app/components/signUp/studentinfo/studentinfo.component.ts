@@ -87,9 +87,6 @@ export class StudentinfoComponent implements OnInit {
              console.log("El error es " , error);
            }
        );
-
-
-
     }
 
 
