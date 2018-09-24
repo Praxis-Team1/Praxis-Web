@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { StudentinfoComponent } from './studentinfo.component';
+import { BrowserModule, By } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DebugElement } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('StudentinfoComponent', () => {
   let component: StudentinfoComponent;
