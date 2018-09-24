@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DebugElement } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 
+import { StudentinfoComponent } from './studentinfo.component';
 describe('StudentinfoComponent', () => {
   let component: StudentinfoComponent;
   let fixture: ComponentFixture<StudentinfoComponent>;
