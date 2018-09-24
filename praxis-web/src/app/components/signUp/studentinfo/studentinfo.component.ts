@@ -2,7 +2,7 @@ import { Component, OnInit , ViewChild,} from '@angular/core';
 import { RouterModule, Router} from '@angular/router';
 import { Student } from '../../../schemas/student';
 import { helperService } from '../../../services/helperService';
-import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule, FormBuilder  } from '@angular/forms';
 
 
 
@@ -15,7 +15,7 @@ export class StudentinfoComponent implements OnInit {
   private verificationPass: string;
   text = 'Sign up page';
   submitted = false;
-  SignUpForm: FormGroup;
+  form: FormGroup;
   private student;
 
   constructor(private router: Router, private helperService: helperService) {

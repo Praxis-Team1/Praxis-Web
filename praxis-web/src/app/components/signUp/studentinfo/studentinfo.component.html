@@ -1,152 +1,152 @@
 <!-- Progress bar -->
 <div class="row justify-content-md-center">
-  <div class="col-12 mx-auto">
-    <div class="container-fluid">
-      <br /><br />
-      <ul class="list-unstyled multi-steps">
-        <li class="is-active">Personal Data</li>
-        <li>Record Video</li>
-        <li>Validate</li>
-        <li>Finish</li>
-      </ul>
+    <div class="col-12 mx-auto">
+        <div class="container-fluid">
+            <br /><br />
+            <ul class="list-unstyled multi-steps">
+                <li class="is-active">Personal Data</li>
+                <li>Record Video</li>
+                <li>Validate</li>
+                <li>Finish</li>
+            </ul>
+        </div>
     </div>
-  </div>
 </div>
 
 <!-- Steps buttons -->
 <div class="row justify-content-md-center">
-  <div class="col-3 mx-auto my-auto">
-    <button type="button" class="btn btn-primary" style="display:none;">Previous</button>
-  </div>
-  <div class="col-0.5 mx-auto my-auto">
-    <button type="button" class="btn btn-primary"  (click)="goToNextStep()">Next</button>
-  </div>
+    <div class="col-3 mx-auto my-auto">
+        <button type="button" class="btn btn-primary" style="display:none;">Previous</button>
+    </div>
+    <div class="col-0.5 mx-auto my-auto">
+        <button type="button" class="btn btn-primary" (click)="goToNextStep()">Next</button>
+    </div>
 </div>
 
 
 <div class="container">
     <div class="row">
-      <div class="col-12">
-      <div class="main-login main-center">
-        <h5> Sign up for Student</h5>
-        <form class="" method="post" action="#">
-          <div class="form-group">
-            <label for="name" class="cols-sm-2 control-label">Your Name</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                <input type="name" [(ngModel)]="this.student.name" class="form-control" name="name" id="name" />
-              </div>
-            </div>
-          </div>
+        <div class="col-12">
+            <div class="main-login main-center">
+                <h5> Sign up for Student</h5>
+                <form [formGroup]="form" class="" method="post" action="#">
+                    <div class="form-group">
+                        <label for="name" class="cols-sm-2 control-label">Your Name</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="name" [(ngModel)]="this.student.name" class="form-control" formControlName="name" name="name" id="name" />
+                            </div>
+                        </div>
+                    </div>
 
-         <div class="row">
-           <div class="col-sm-4">
-              <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Document Type</label>
-                 <select class="custom-select my-1 mr-sm-2" [(ngModel)]="this.student.typeOfPraxis" name="DocumentType">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Document Type</label>
+                            <select class="custom-select my-1 mr-sm-2" [(ngModel)]="this.student.typeOfPraxis" formControlName="DocumentType" name="DocumentType">
                  <option selected>Choose...</option>
                  <option value="1">Practice</option>
                  <option value="2">First Employment</option>
                  <option value="3">Learning purposes</option>
              </select>
-            </div>
-            <div class="col-sm-8">
-             <label for="name" class="cols-sm-2 control-label">Document Number</label>
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                <input type="name"  class="form-control" name="document" id="document" />
-              </div>
-            </div>
-          </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <label for="name" class="cols-sm-2 control-label">Document Number</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="name" class="form-control" formControlName="document" name="document" id="document" />
+                            </div>
+                        </div>
+                    </div>
 
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email"  [(ngModel)]="this.student.email" class="form-control" name="email" id="email" aria-describedby="emailHelp">
-         </div>
-          <div class="form-group">
-            <label for="name" class="cols-sm-2 control-label">Birthdate</label>
-            <div class="cols-sm-14">
-              <div class="input-group">
-                <input type="date" [(ngModel)]="this.student.birthdate" name="date">
-              </div>
-            </div>
-          </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" [(ngModel)]="this.student.email" class="form-control" formControlName="email" name="email" id="email" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="cols-sm-2 control-label">Birthdate</label>
+                        <div class="cols-sm-14">
+                            <div class="input-group">
+                                <input type="date" [(ngModel)]="this.student.birthdate" name="date">
+                            </div>
+                        </div>
+                    </div>
 
 
-          <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Praxis Type</label>
-             <select class="custom-select my-1 mr-sm-2" [(ngModel)]="this.student.typeOfPraxis" name="PraxisType" id="inlineFormCustomSelectPref">
+                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Praxis Type</label>
+                    <select class="custom-select my-1 mr-sm-2" [(ngModel)]="this.student.typeOfPraxis" formControlName="PraxisType" name="PraxisType" id="inlineFormCustomSelectPref">
              <option selected>Choose...</option>
              <option value="1">Practice</option>
              <option value="2">First Employment</option>
              <option value="3">Learning purposes</option>
           </select>
 
-          <div class="form-group">
-            <label for="password" class="cols-sm-2 control-label">Password</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                <input type="password" [(ngModel)]="this.student.password" class="form-control" name="password" id="password" />
-              </div>
-            </div>
-          </div>
+                    <div class="form-group">
+                        <label for="password" class="cols-sm-2 control-label">Password</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                <input type="password" [(ngModel)]="this.student.password" class="form-control" formControlName="password" name="password" id="password" />
+                            </div>
+                        </div>
+                    </div>
 
-          <div class="form-group">
-            <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                <input type="password" [(ngModel)]="this.verificationPass" class="form-control" name="confirm" id="confirm" />
-              </div>
-            </div>
-          </div>
+                    <div class="form-group">
+                        <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                <input type="password" [(ngModel)]="this.verificationPass" class="form-control" formControlName="confirm" name="confirm" id="confirm" />
+                            </div>
+                        </div>
+                    </div>
 
 
 
-           <label class="my-1 mr-2" for="inlineFormCustomSelectPref">University</label>
-                <select class="custom-select my-1 mr-sm-2" [(ngModel)]="this.student.university" name="university">
+                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">University</label>
+                    <select class="custom-select my-1 mr-sm-2" [(ngModel)]="this.student.university" formControlName="university" name="university">
                 <option selected>Please choose an university...</option>
                 <option value="1">Universidad Nacional de Colombia</option>
           </select>
 
 
-          <div class="form-group">
-            <label for="password" class="cols-sm-2 control-label">Semester</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                <input type="semester" [(ngModel)]="this.student.semester" class="form-control" name="semester" id="semester" />
-              </div>
+                    <div class="form-group">
+                        <label for="password" class="cols-sm-2 control-label">Semester</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                <input type="semester" [(ngModel)]="this.student.semester" class="form-control" formControlName="semester" name="semester" id="semester" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                <input type="password" [(ngModel)]="this.verificationPass" class="form-control" formControlName="confirm" name="confirm" id="confirm" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                <input type="password" [(ngModel)]="this.verificationPass" class="form-control" formControlName="confirm" name="confirm" id="confirm" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea2">Soft description</label>
+                        <textarea class="form-control rounded-0" [(ngModel)]="this.student.biography" formControlName="biography" name="biography" id="exampleFormControlTextarea2" rows="3"></textarea>
+                    </div>
+                </form>
             </div>
-          </div>
-
-
-          <div class="form-group">
-            <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                <input type="password" [(ngModel)]="this.verificationPass" class="form-control" name="confirm" id="confirm" />
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                <input type="password" [(ngModel)]="this.verificationPass" class="form-control" name="confirm" id="confirm" />
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="exampleFormControlTextarea2">Soft description</label>
-            <textarea class="form-control rounded-0" [(ngModel)]="this.student.biography" name="biography" id="exampleFormControlTextarea2" rows="3"></textarea>
-           </div>
-        </form>
-      </div>
+        </div>
     </div>
-  </div>
 </div>

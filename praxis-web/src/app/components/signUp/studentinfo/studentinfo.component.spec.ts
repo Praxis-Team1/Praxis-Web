@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DebugElement } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
+
 
 import { StudentinfoComponent } from './studentinfo.component';
 describe('StudentinfoComponent', () => {
@@ -19,7 +21,8 @@ describe('StudentinfoComponent', () => {
       imports: [
         BrowserModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterTestingModule
       ]
     })
       .compileComponents().then(() => {
@@ -39,40 +42,39 @@ describe('StudentinfoComponent', () => {
 
   it(`should call the goToNextStep method`, async(() => {
     spyOn(component, 'goToNextStep');
-    el = fixture.debugElement.query(By.css('button')).nativeElement;
-    el.click();
+    component.goToNextStep();
     expect(component.goToNextStep).toHaveBeenCalled();
   }));
 
  it(`form should be invalid`, async(() => {
-  component.SignUpForm.controls['name'].setValue('');
-  component.SignUpForm.controls['DocumentType'].setValue('');
-  component.SignUpForm.controls['document'].setValue('');
-  component.SignUpForm.controls['email'].setValue('');
-  component.SignUpForm.controls['PraxisType'].setValue('');
-  component.SignUpForm.controls['date'].setValue('');
-  component.SignUpForm.controls['password'].setValue('');
-  component.SignUpForm.controls['confirm'].setValue('');
-  component.SignUpForm.controls['university'].setValue('');
-  component.SignUpForm.controls['semester'].setValue('');
-  component.SignUpForm.controls['biography'].setValue('');
-    expect(component.SignUpForm.valid).toBeFalsy();
+  component.form.controls['name'].setValue('');
+  component.form.controls['DocumentType'].setValue('');
+  component.form.controls['document'].setValue('');
+  component.form.controls['email'].setValue('');
+  component.form.controls['PraxisType'].setValue('');
+  component.form.controls['date'].setValue('');
+  component.form.controls['password'].setValue('');
+  component.form.controls['confirm'].setValue('');
+  component.form.controls['university'].setValue('');
+  component.form.controls['semester'].setValue('');
+  component.form.controls['biography'].setValue('');
+    expect(component.form.valid).toBeFalsy();
   }));
 
   it(`form should be valid`, async(() => {
-    component.SignUpForm.controls['name'].setValue('Carlos Santos');
-    component.SignUpForm.controls['DocumentType'].setValue('1');
-    component.SignUpForm.controls['document'].setValue('1152215835');
-    component.SignUpForm.controls['email'].setValue('cesantosv@unal.edu.co');
-    component.SignUpForm.controls['PraxisType'].setValue('20/09/2018');
-    component.SignUpForm.controls['date'].setValue('1');
-    component.SignUpForm.controls['password'].setValue('hola123');
-    component.SignUpForm.controls['confirm'].setValue('hola123');
-    component.SignUpForm.controls['university'].setValue('1');
-    component.SignUpForm.controls['semester'].setValue('9');
-    component.SignUpForm.controls['biography'].setValue('estoy describiendome');
+    component.form.controls['name'].setValue('Carlos Santos');
+    component.form.controls['DocumentType'].setValue('1');
+    component.form.controls['document'].setValue('1152215835');
+    component.form.controls['email'].setValue('cesantosv@unal.edu.co');
+    component.form.controls['PraxisType'].setValue('20/09/2018');
+    component.form.controls['date'].setValue('1');
+    component.form.controls['password'].setValue('hola123');
+    component.form.controls['confirm'].setValue('hola123');
+    component.form.controls['university'].setValue('1');
+    component.form.controls['semester'].setValue('9');
+    component.form.controls['biography'].setValue('estoy describiendome');
    // component.SignUpForm.controls['confirm'].setValue('hola123');
-    expect(component.SignUpForm.valid).toBeTruthy();
+    expect(component.form.valid).toBeTruthy();
   }));
 });
 

@@ -12,10 +12,8 @@ export class FinishSignUpComponent implements OnInit {
   ngOnInit() {
   }
 
-
-
-    goToPrevStep(){
-      this.router.navigate(['student/signUp/step3'])
+    goToPrevStep() {
+      this.router.navigate(['student/signUp/step3']);
     }
 
 }
