@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import { RouterModule, Router, ActivatedRoute} from '@angular/router';
 import * as RecordRTC from 'recordrtc/RecordRTC.min';
 import { helperService } from '../../../services/helperService';
-
+import { BootstrapAlertService } from 'ngx-bootstrap-alert-service';
 @Component({
   selector: 'app-recordvideo',
   templateUrl: './recordvideo.component.html',
@@ -20,8 +20,8 @@ export class RecordvideoComponent implements AfterViewInit {
 
  @ViewChild('video') video;
 
- constructor(private router: Router,private helperService: helperService) {
-
+ constructor(private router: Router,private helperService: helperService, private bootstrapAlertService: BootstrapAlertService) {
+    this.student = this.helperService.getStudentOfSignUp();
     console.log("En video " , this.helperService.getStudentOfSignUp() );
  }
 
@@ -86,9 +86,8 @@ export class RecordvideoComponent implements AfterViewInit {
      video: true,
      audio: true
    };
-
-    navigator.mediaDevices.getUserMedia(mediaContraints).then(
-     this.successCallback.bind(this), this.errorCallback.bind(this));
+   navigator.mediaDevices.getUserMedia(mediaContraints).then(
+   this.successCallback.bind(this), this.errorCallback.bind(this));
  }
 
  stopRecording() {
@@ -97,6 +96,13 @@ export class RecordvideoComponent implements AfterViewInit {
    let stream = this.stream;
    stream.getAudioTracks().forEach(track => track.stop());
    stream.getVideoTracks().forEach(track => track.stop());
+
+
+   let blob = this.recordRTC.getBlob();
+
+   let fileObject = new File([blob], "", {
+      type: 'video/webm'
+   });
  }
 
  download() {
@@ -104,23 +110,26 @@ export class RecordvideoComponent implements AfterViewInit {
  }
 
  goToNextStep(){
-    let recordRTC = this.recordRTC;
-    var recordedBlob = recordRTC.getBlob();
+
+   let recordRTC = this.recordRTC;
+   try {
+     var recordedBlob = recordRTC.getBlob();
+     this.helperService.studentSignUp.urlvideo = this.urlVideoRecorded;
+
+     this.router.navigate(['student/signUp/step3']).then(
+         data=>{
+           console.log("Data ", data);
+         },
+         error=>{
+           console.log("El error es " , error);
+         }
+     );
+   }
+   catch(err) {
+      this.bootstrapAlertService.showError('You have to record the video before passing to next step');
+   }
 
     //No se si es necesario cambiar esto.
-
-    //Aca actualizamos la url.
-    this.helperService.studentSignUp.urlvideo = this.urlVideoRecorded;
-
-
-    this.router.navigate(['student/signUp/step3'], { queryParams: { urlvideo: this.urlVideoRecorded}}).then(
-        data=>{
-          console.log("Data ", data);
-        },
-        error=>{
-          console.log("El error es " , error);
-        }
-    );
   }
 
   goToPrevStep(){
