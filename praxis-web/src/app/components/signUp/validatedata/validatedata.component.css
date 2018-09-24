@@ -82,11 +82,11 @@
 }
 
 /* Responsive progress bar */
-@media only screen and (max-width: 410px) {
+/* @media only screen and (max-width: 410px) {
   .multi-steps > li.is-active ~ li {
     display: none;
   }
-}
+} */
 
 #playground-container {
     height: 500px;
@@ -175,14 +175,14 @@ span.input-group-addon i {
 
 .recordvideo h4{
     text-align: center;
-    color: 	#fff;
+    /* color: 	#fff; */
 }
 
 .recordvideo {
     margin-top: 30px;
     margin: 0 auto;
     padding: 10px 40px;
-    background:#47a3da;
+    /* background:#47a3da; */
     padding: 10px 40px;
     /* -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
     -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
@@ -192,4 +192,8 @@ span.input-group-addon i {
 .padding-0 {
   padding-right: 0;
   padding-left: 0;
+}
+
+.bold-label {
+  font-weight: bold;
 }
