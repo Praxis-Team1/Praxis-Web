@@ -15,11 +15,8 @@ export class FinishSignUpComponent implements OnInit {
 
   constructor(private router: Router,private helperService: helperService) {
     this.student = this.helperService.getStudentOfSignUp();
-<<<<<<< HEAD
-    console.log("En el paso final" , this.helperService.getStudentOfSignUp());
-=======
     console.log("En el paso final" , this.helperService.getStudentOfSignUp() );
->>>>>>> 6e4aceac689cab90961ae90dc35c61420c943c14
+
   }
 
   ngOnInit() {

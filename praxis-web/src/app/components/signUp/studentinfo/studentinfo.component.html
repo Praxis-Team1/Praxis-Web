@@ -48,12 +48,7 @@
            <div class="col-sm-4">
              <div>
               <label class="my-1 mr-2" for="documentType">Document Type</label>
-<<<<<<< HEAD
               <select class="custom-select my-1 mr-sm-2" [(ngModel)]="this.student.documentType" name="documentType" id="documentType" formControlName="documentType">
-=======
-              <select class="custom-select my-1 mr-sm-2" [(ngModel)]="this.student.documentType" name="documentType" id="documentType" [ngModelOptions]="{standalone: true}">
-                 <option selected disabled>Choose...</option>
->>>>>>> 6e4aceac689cab90961ae90dc35c61420c943c14
                  <option value="C.C.">C.C.</option>
                  <option value="C.E.">C.E.</option>
              </select>
@@ -96,12 +91,7 @@
           </div>
 
           <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Praxis Type</label>
-<<<<<<< HEAD
           <select class="custom-select my-1 mr-sm-2" [(ngModel)]="this.student.typeOfPraxis" name="PraxisType" id="typeOfPraxis" formControlName="praxistype">
-=======
-          <select class="custom-select my-1 mr-sm-2" [(ngModel)]="this.student.typeOfPraxis" name="PraxisType" id="typeOfPraxis" [ngModelOptions]="{standalone: true}">
-             <option selected disabled>Choose...</option>
->>>>>>> 6e4aceac689cab90961ae90dc35c61420c943c14
              <option value="Practice">Practice</option>
              <option value="First Employment">First Employment</option>
              <option value="Learning purpouses">Learning purposes</option>
@@ -131,13 +121,7 @@
           </div>
 
           <label class="my-1 mr-2" for="university">University</label>
-<<<<<<< HEAD
           <select class="custom-select my-1 mr-sm-2" [(ngModel)]="this.student.university" name="university" id="university" formControlName="university">
-            <option selected>Please choose an university...</option>
-=======
-          <select class="custom-select my-1 mr-sm-2" [(ngModel)]="this.student.university" name="university" id="university" [ngModelOptions]="{standalone: true}">
-            <option selected disabled>Please choose an university...</option>
->>>>>>> 6e4aceac689cab90961ae90dc35c61420c943c14
             <option value="UNal">Universidad Nacional de Colombia</option>
           </select>
           <div class="alert alert-danger" *ngIf="!rForm.controls['university'].valid && rForm.controls['university'].touched">
