@@ -25,3 +25,12 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Authors:
+* Jhon Jairo Serna Córdoba (Cordoba-Js)
+* Santiago Arbelaéz C. (sarbelaezc)
+* Sebastian Pino Sanchez (sebastianpinosanchez)
+* Nicolas Peña (Naithor)
+* Juan Pablo Villegas Gómez (MrPaul91)
+* Jerson David Mendoza Alvares (jdmendozaa)
+* Carlos Santos (cesantosv)
