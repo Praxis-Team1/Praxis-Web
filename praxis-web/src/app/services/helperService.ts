@@ -9,8 +9,6 @@ export class helperService {
 
    public navbar: Boolean = false;
    
-
-
    setStudentOfSignUp(student: Student){
       this.studentSignUp = student;
    }
