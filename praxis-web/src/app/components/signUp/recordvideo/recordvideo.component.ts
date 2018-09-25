@@ -3,6 +3,8 @@ import { RouterModule, Router, ActivatedRoute} from '@angular/router';
 import * as RecordRTC from 'recordrtc/RecordRTC.min';
 import { helperService } from '../../../services/helperService';
 import { BootstrapAlertService } from 'ngx-bootstrap-alert-service';
+
+
 @Component({
   selector: 'app-recordvideo',
   templateUrl: './recordvideo.component.html',
@@ -20,7 +22,9 @@ export class RecordvideoComponent implements AfterViewInit {
 
  @ViewChild('video') video;
 
- constructor(private router: Router,private helperService: helperService, private bootstrapAlertService: BootstrapAlertService) {
+ constructor(private router: Router,private helperService: helperService,
+    private bootstrapAlertService: BootstrapAlertService
+ ) {
     this.student = this.helperService.getStudentOfSignUp();
     console.log("En video " , this.helperService.getStudentOfSignUp() );
  }
@@ -103,6 +107,13 @@ export class RecordvideoComponent implements AfterViewInit {
    let fileObject = new File([blob], "", {
       type: 'video/webm'
    });
+
+  this.helperService.uploadVideoToS3(fileObject);
+
+
+   console.log("EL FILE " , fileObject);
+
+   console.log("El tipo", typeof fileObject);
  }
 
  download() {
