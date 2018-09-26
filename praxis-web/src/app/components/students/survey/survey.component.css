@@ -1,0 +1,44 @@
+.container-fluid {
+  box-sizing: border-box;
+  max-width: 50%;
+  position: center;
+}
+h1 {
+  text-align: center;
+}
+h5, button {
+  margin-top: 50px;
+}
+div span, #date {
+  margin: 50px 0 20px 0;
+}
+#date {
+  max-width: 150px;
+}
+table {
+  max-width: 800px;
+}
+
+
+@media (max-width: 800px) {
+  .container-fluid {
+    max-width: 90%;
+  }
+  div span {
+    margin-top: 50px;
+    width: 160px;
+  }
+  #date {
+    min-width: 160px;
+  }
+  table{
+    max-width: 90%;
+  }
+
+  @media (max-width: 404px) {
+    #date {
+      min-width: 160px;
+      margin-bottom: 20px;
+    }
+  }
+}

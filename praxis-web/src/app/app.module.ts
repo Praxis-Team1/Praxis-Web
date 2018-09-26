@@ -13,12 +13,14 @@ import { InitialNavbarComponent } from './components/shared/initial-navbar/initi
 import { FinishSignUpComponent } from './components/signUp/finish-sign-up/finish-sign-up.component';
 
 
-//Routes.
+// Routes
 import { ROUTES } from './app.routes';
 
 
-//Services
+// Services
 import { helperService } from './services/helperService';
+import { StudentsComponent } from './components/students/students.component';
+import { SurveyComponent } from './components/students/survey/survey.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { helperService } from './services/helperService';
     ValidatedataComponent,
     LoginComponent,
     InitialNavbarComponent,
-    FinishSignUpComponent
+    FinishSignUpComponent,
+    StudentsComponent,
+    SurveyComponent
   ],
   imports: [
     BrowserModule,
