@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false ,
+  urlserver: 'https://praxis-server-team1.herokuapp.com',
+  accessKeyId: 'AKIAIFCRRZ2ANLOZD2UA',
+  secretAccessKey: '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',
+  region: 'us-east-1',
+  Bucket: 'praxisvideo'
 };
 
 /*

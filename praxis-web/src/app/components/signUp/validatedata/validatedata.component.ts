@@ -3,6 +3,7 @@ import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { helperService } from '../../../services/helperService';
 import { Student } from '../../../schemas/student';
+import { httpService } from '../../../services/httpService';
 
 @Component({
   selector: 'app-validatedata',
@@ -15,7 +16,8 @@ export class ValidatedataComponent implements OnInit {
   private mensaje: string;
   private student: Student;
 
-  constructor(private router: Router, private sanitizer:  DomSanitizer, private helperService: helperService) {
+  constructor(private router: Router, private sanitizer:  DomSanitizer,
+     private helperService: helperService, private http: httpService) {
     this.student = this.helperService.getStudentOfSignUp();
     console.log("En validate data " , this.student);
   }
@@ -39,6 +41,27 @@ export class ValidatedataComponent implements OnInit {
 
   goToNextStep(){
     //Falta.
+   let date: string;
+  
+   date = new Date(this.student.birthdate).toISOString();
+   
+   this.student.birthdate = date;
+
+   console.log(this.student);
+
+   this.http.signUp(this.student).subscribe(
+
+      (data ) => {
+        console.log("Data", data);
+      },
+
+      (error) => {
+         
+        console.log("Error" ,error);
+      }
+   )
+
+   
    this.router.navigate(['student/signUp/step4']);
   }
 
