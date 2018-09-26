@@ -15,7 +15,7 @@ import { ValidatedataComponent } from './components/signUp/validatedata/validate
 import { LoginComponent } from './components/login/login.component';
 import { InitialNavbarComponent } from './components/shared/initial-navbar/initial-navbar.component';
 import { FinishSignUpComponent } from './components/signUp/finish-sign-up/finish-sign-up.component';
-
+import { MainmenuNavbarComponent } from './components/shared/mainmenu-navbar/mainmenu-navbar.component';
 
 //Routes.
 import { ROUTES } from './app.routes';
@@ -25,6 +25,12 @@ import { ROUTES } from './app.routes';
 import { helperService } from './services/helperService';
 import { storageVideoService } from './services/storagevideoService';
 import { httpService } from './services/httpService';
+import { generalService } from './services/generalService';
+import { MainmenuComponent } from './components/student/mainmenu/mainmenu.component';
+import { GradesComponent } from './components/student/grades/grades.component';
+
+
+
 
 
 @NgModule({
@@ -36,6 +42,9 @@ import { httpService } from './services/httpService';
     LoginComponent,
     InitialNavbarComponent,
     FinishSignUpComponent,
+    MainmenuNavbarComponent,
+    MainmenuComponent,
+    GradesComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +61,8 @@ import { httpService } from './services/httpService';
   providers: [
     helperService,
     storageVideoService,
-    httpService
+    httpService,
+    generalService
 
   ],
   bootstrap: [AppComponent]
