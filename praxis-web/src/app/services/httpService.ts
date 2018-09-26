@@ -1,13 +1,14 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Student } from '../schemas/student';
+import { environment } from '../../environments/environment';
 
 
 @Injectable()
 export class httpService {
 
 
-  private url: string = "https://praxischallenge.herokuapp.com/user";
 
 
   static httpOptions = {
@@ -23,7 +24,7 @@ export class httpService {
 
 
   getMessage() {
-    return this.http.get(this.url);
+    return this.http.get(environment.urlserver);
   }
 
 
@@ -34,6 +35,12 @@ export class httpService {
         if(email== "test@unal.edu.co" && password == "test"){
               return true;
         }
+  }
+
+
+  signUp(student: Student){
+    return this.http.post<Student>(environment.urlserver+"/students",
+      JSON.stringify(student), httpService.httpOptions);
   }
 
 }

@@ -3,8 +3,6 @@ import { RouterModule, Router, ActivatedRoute} from '@angular/router';
 import * as RecordRTC from 'recordrtc/RecordRTC.min';
 import { helperService } from '../../../services/helperService';
 import { BootstrapAlertService } from 'ngx-bootstrap-alert-service';
-
-
 @Component({
   selector: 'app-recordvideo',
   templateUrl: './recordvideo.component.html',
@@ -22,9 +20,7 @@ export class RecordvideoComponent implements AfterViewInit {
 
  @ViewChild('video') video;
 
- constructor(private router: Router,private helperService: helperService,
-    private bootstrapAlertService: BootstrapAlertService
- ) {
+ constructor(private router: Router,private helperService: helperService, private bootstrapAlertService: BootstrapAlertService) {
     this.student = this.helperService.getStudentOfSignUp();
     console.log("En video " , this.helperService.getStudentOfSignUp() );
  }
@@ -83,6 +79,13 @@ export class RecordvideoComponent implements AfterViewInit {
 
    this.urlVideoRecorded = video.src;
 
+      let fileObject = new File([recordedBlob], "", {
+        type: 'video/webm'
+    });
+
+    this.helperService.uploadVideo(fileObject, this.student.email);
+
+
  }
 
  startRecording() {
@@ -107,13 +110,6 @@ export class RecordvideoComponent implements AfterViewInit {
    let fileObject = new File([blob], "", {
       type: 'video/webm'
    });
-
-  this.helperService.uploadVideoToS3(fileObject);
-
-
-   console.log("EL FILE " , fileObject);
-
-   console.log("El tipo", typeof fileObject);
  }
 
  download() {
@@ -125,8 +121,11 @@ export class RecordvideoComponent implements AfterViewInit {
    let recordRTC = this.recordRTC;
    try {
      var recordedBlob = recordRTC.getBlob();
-     this.helperService.studentSignUp.urlvideo = this.urlVideoRecorded;
 
+     
+     this.helperService.urlVideoToShow = this.urlVideoRecorded;  
+     this.helperService.studentSignUp.videoUrl = this.helperService.getFileUrl(this.student.email+".mp4");
+     
      this.router.navigate(['student/signUp/step3']).then(
          data=>{
            console.log("Data ", data);
@@ -136,15 +135,14 @@ export class RecordvideoComponent implements AfterViewInit {
          }
      );
    }
-   catch(err) {
+   catch(error) {
       this.bootstrapAlertService.showError('You have to record the video before passing to next step');
    }
-
     //No se si es necesario cambiar esto.
   }
 
   goToPrevStep(){
-    this.router.navigate(['student/signUp/step1'])
+    this.router.navigate(['student/signUp/step1']);
   }
 
 }

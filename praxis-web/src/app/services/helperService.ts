@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Student } from '../schemas/student';
-import * as AWS from 'aws-sdk';
+import * as AWS from 'aws-sdk/global';
+import * as S3 from 'aws-sdk/clients/s3';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class helperService {
@@ -8,7 +10,19 @@ export class helperService {
    public studentSignUp: Student= new Student();
 
    public navbar: Boolean = false;
+
+
+   public urlVideoToShow: string;
    
+
+   public  bucket = new S3(
+     {
+       accessKeyId: environment.accessKeyId,
+       secretAccessKey: environment.secretAccessKey,
+       region: environment.region
+     }
+   );
+
    setStudentOfSignUp(student: Student){
       this.studentSignUp = student;
    }
@@ -18,41 +32,34 @@ export class helperService {
       return this.studentSignUp;
    }
 
-
-
-       uploadVideoToS3(file: any) {
-             const filename = "video1";
-
-             const AWSService = AWS;
-             const region = 'us-east-1';
-             const bucketName = 'praxisvideo';
-             const IdentityPoolId = 'us-east-1:16967de0-49ab-421f-b76f-4d561f8b2879';
-             //const file = videoInput.target.files[0];
-            //Configures the AWS service and initial authorization
-             AWSService.config.update({
-               region: region,
-               credentials: new AWSService.CognitoIdentityCredentials({
-                 IdentityPoolId: IdentityPoolId
-               })
-             });
-           //adds the S3 service, make sure the api version and bucket are correct
-             const s3 = new AWSService.S3({
-               apiVersion: '2006-03-01',
-               params: { Bucket: bucketName}
-             });
-         //  //I store this in a variable for retrieval later
-       //    this.image = file.name;
-             s3.upload({ Key: filename, Bucket: bucketName, Body: file, ACL: 'public-read'}, function (err, data) {
-              if (err) {
-                console.log(err, 'there was an error uploading your file');
-              }
+   uploadVideo(file: any, nameKey: string){
+        let name: string = nameKey+".mp4";
+        const params = {
+          Bucket: 'praxisvideo',
+          Key:  name,
+          Body: file
+        };
+        this.bucket.upload(params).on("httpUploadProgress", (progress)=>{
+          console.log(progress.loaded*100/progress.total)
+        }).send(function (err, data) {
+             if (err) {
+               console.log('There was an error uploading your file: ', err);
+               return false;
+             }
+              console.log('Video succesfully', data);
+             return true;
         });
+   }
 
+   getFileUrl(key: String) {
+       const params = {
+         Bucket: environment.Bucket,
+         Key: key,
+       };
+       var url = this.bucket.getSignedUrl('getObject', params);
+       return url;
 
-
-      }
-
-
+   }
 
 
 }

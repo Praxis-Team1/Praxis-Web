@@ -7,7 +7,7 @@ import { helperService } from '../../../services/helperService';
 import { httpService } from '../../../services/httpService';
 import { HttpClientModule, HttpClient, HttpHandler } from '@angular/common/http';
 import { BootstrapAlertService } from 'ngx-bootstrap-alert-service';
-
+import {} from 'jasmine';
 
 import { StudentinfoComponent } from './studentinfo.component';
 describe('StudentinfoComponent', () => {

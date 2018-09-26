@@ -25,6 +25,11 @@ import { ROUTES } from './app.routes';
 import { helperService } from './services/helperService';
 import { storageVideoService } from './services/storagevideoService';
 import { httpService } from './services/httpService';
+import { generalService } from './services/generalService';
+import { MainmenuComponent } from './components/student/mainmenu/mainmenu.component';
+import { GradesComponent } from './components/student/grades/grades.component';
+
+
 
 
 
@@ -38,6 +43,8 @@ import { httpService } from './services/httpService';
     InitialNavbarComponent,
     FinishSignUpComponent,
     MainmenuNavbarComponent,
+    MainmenuComponent,
+    GradesComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +61,8 @@ import { httpService } from './services/httpService';
   providers: [
     helperService,
     storageVideoService,
-    httpService
+    httpService,
+    generalService
 
   ],
   bootstrap: [AppComponent]

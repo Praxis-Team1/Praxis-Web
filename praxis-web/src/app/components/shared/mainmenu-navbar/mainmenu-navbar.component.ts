@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { generalService } from '../../../services/generalService';
+
+
 @Component({
   selector: 'app-mainmenu-navbar',
   templateUrl: './mainmenu-navbar.component.html',
@@ -7,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainmenuNavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public generalService: generalService) {
+
+       console.log(this.generalService.statusNavBarMenuStudent);
+
+  }
 
   ngOnInit() {
   }
