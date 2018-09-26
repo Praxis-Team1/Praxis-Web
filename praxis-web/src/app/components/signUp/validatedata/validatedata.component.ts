@@ -14,6 +14,7 @@ export class ValidatedataComponent implements OnInit {
   private urlvideo: any;
   private mensaje: string;
   private student: Student;
+  private step: number;
 
   constructor(private router: Router, private sanitizer:  DomSanitizer, private helperService: helperService) {
     this.student = this.helperService.getStudentOfSignUp();
@@ -27,6 +28,12 @@ export class ValidatedataComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.step = this.helperService.getStepValidation();
+    console.log(this.step);
+    if(this.step < 3){
+      console.log(this.step);
+      this.router.navigate(['student/signUp/step1'])
+    }
   }
 
   ngAfterViewInit() {

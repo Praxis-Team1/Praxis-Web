@@ -12,6 +12,7 @@ import { helperService } from '../../../services/helperService';
 export class FinishSignUpComponent implements OnInit {
 
   private student;
+  private step;
 
   constructor(private router: Router,private helperService: helperService) {
     this.student = this.helperService.getStudentOfSignUp();
@@ -20,6 +21,12 @@ export class FinishSignUpComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.step = this.helperService.getStepValidation();
+    console.log(this.step);
+    if(this.step < 4){
+      console.log(this.step);
+      this.router.navigate(['student/signUp/step1'])
+    }
   }
 
   goToNextStep(){

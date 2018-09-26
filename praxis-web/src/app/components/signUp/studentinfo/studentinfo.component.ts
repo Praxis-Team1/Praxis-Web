@@ -12,19 +12,18 @@ import { BootstrapAlertService } from 'ngx-bootstrap-alert-service';
   templateUrl: './studentinfo.component.html',
   styleUrls: ['./studentinfo.component.css']
 })
+
 export class StudentinfoComponent implements OnInit {
 
   public verificationPass: string;
   public rForm: FormGroup;
   private student;
+  private step;
   text = 'Sign up page';
   submitted = false;
 
-
-
   private emailPattern: string = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
 
-//
   constructor(public router: Router, public helperService: helperService,public formBuilder: FormBuilder, public http: httpService, private bootstrapAlertService: BootstrapAlertService) {
 
     this.student = this.helperService.getStudentOfSignUp();
@@ -33,11 +32,9 @@ export class StudentinfoComponent implements OnInit {
       console.log(data);
     },
      (error) => {
-
         console.log(error);
      }
     );
-
 
      this.rForm = formBuilder.group({
         "name": ["", Validators.required],
@@ -53,13 +50,9 @@ export class StudentinfoComponent implements OnInit {
         "praxistype": ["", Validators.required]
       },
       {
-
          validator: PasswordValidator.MatchPassword
       }
    );
-
-
-
 
   }
 
@@ -71,14 +64,16 @@ export class StudentinfoComponent implements OnInit {
     //console.log(this.student);
 
     //Es necesario los validators.
+    this.step = this.helperService.setStepValidation(this.step);
 
     this.helperService.setStudentOfSignUp(this.student);
-
 
     if(!this.rForm.valid){
        this.bootstrapAlertService.showError('You have to fill all the information in the form');
     }else{
-
+      if(this.step<1){
+        this.bootstrapAlertService.showError("You can't acces to the next step before complete this one")
+      }else{
         this.router.navigate(['student/signUp/step2']).then(
            data=>{
              console.log("Data ", data);
@@ -86,12 +81,9 @@ export class StudentinfoComponent implements OnInit {
            error=>{
              console.log("El error es " , error);
            }
-       );
-
-
-
+         );
+      }
     }
-
 
   }
 
