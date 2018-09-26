@@ -20,7 +20,7 @@ import { ROUTES } from './app.routes';
 // Services
 import { helperService } from './services/helperService';
 import { StudentsComponent } from './components/students/students.component';
-import { SurveyComponent } from './components/students/survey/survey.component';
+import { SurveyFormComponent } from './components/students/surveyForm/surveyForm.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import { SurveyComponent } from './components/students/survey/survey.component';
     InitialNavbarComponent,
     FinishSignUpComponent,
     StudentsComponent,
-    SurveyComponent
+    SurveyFormComponent
   ],
   imports: [
     BrowserModule,

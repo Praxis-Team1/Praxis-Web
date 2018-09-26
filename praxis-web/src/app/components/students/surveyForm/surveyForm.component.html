@@ -1,23 +1,23 @@
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <div class="row justify-content-md-center" xmlns="http://www.w3.org/1999/html">
   <div class="col-12 mx-auto">
     <h1>PRAXIS Sessions Evaluation</h1>
-    <div class="container-fluid">
-      <form class="was-validated">
+    <div class="container-fluid" [hidden]="submitted">
+
+      <form class="was-validated" (ngSubmit)="onSubmit()" #surveyForm="ngForm">
         <div class="input-group input-group-sm mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text">Select session's date.</span>
           </div>
+          <label for="date"></label>
           <input type="date" class="form-control" id="date" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
         </div>
 
         <h5>Select tutor's name</h5>
-        <select class="custom-select custom-select-lg mb-3" required>
-          <option selected></option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
+        <label>
+          <select class="custom-select custom-select-lg mb-3" required>
+            <option *ngFor="let nameT of tutors" [value]="nameT">{{nameT}}</option>
+          </select>
+        </label>
 
         <h5>Select session type:</h5>
         <div class="custom-control custom-radio">
@@ -28,6 +28,7 @@
           <input type="radio" id="face-to-face" name="sessionType" class="custom-control-input" required>
           <label class="custom-control-label" for="face-to-face"><b>Face-to-face</b></label>
         </div>
+
 
         <h5>Session quality</h5>
         <table class="table table-striped">
@@ -244,7 +245,7 @@
           </label>
         </div>
 
-        <button class="btn btn-primary" type="submit">Submit form</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!surveyForm.form.valid">Submit form</button>
 
       </form>
     </div>

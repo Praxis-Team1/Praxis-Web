@@ -12,6 +12,9 @@ h5, button {
 div span, #date {
   margin: 50px 0 20px 0;
 }
+label select, textarea {
+  width: 400%;
+}
 #date {
   max-width: 150px;
 }
@@ -25,8 +28,11 @@ table {
     max-width: 90%;
   }
   div span {
-    margin-top: 50px;
+    margin: 50px 0 0 0;
     width: 160px;
+  }
+  label select, textarea {
+    width: 250%;
   }
   #date {
     min-width: 160px;
@@ -36,9 +42,12 @@ table {
   }
 
   @media (max-width: 404px) {
-    #date {
+    label select, textarea {
+      width: 150%;
+    }
+    div #date {
       min-width: 160px;
-      margin-bottom: 20px;
+      margin: 0 0 20px 0;
     }
   }
 }
