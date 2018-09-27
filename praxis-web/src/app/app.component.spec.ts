@@ -4,6 +4,10 @@ import { InitialNavbarComponent } from './components/shared/initial-navbar/initi
 import { RouterTestingModule } from '@angular/router/testing';
 import { BootstrapAlertModule } from 'ngx-bootstrap-alert-service';
 describe('AppComponent', () => {
+  it('primer tesst', () => {
+    expect(true).toBe(true);
+  });
+  /** 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
