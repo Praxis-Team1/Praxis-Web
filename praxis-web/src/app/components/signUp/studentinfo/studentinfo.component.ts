@@ -31,7 +31,7 @@ export class StudentinfoComponent implements OnInit {
     this.student = this.helperService.getStudentOfSignUp();
 
     this.http.getMessage().subscribe((data)=> {
-      console.log(data);
+      // console.log(data);
     },
      (error) => {
         console.log(error);
