@@ -29,11 +29,9 @@ export class httpService {
 
   }
 
-
   getMessage() {
     return this.http.get(environment.urlserver);
   }
-
 
   /*Aqui debeberia ir la peticion para hacer el login, pero pondremos algo de prueba*/
   /*Se simula el backend */
@@ -48,6 +46,7 @@ export class httpService {
   }
 
 
+
   getSessions() {
 
     const headers = new Headers({
@@ -60,7 +59,6 @@ export class httpService {
 
 
   }
-
 
   getStudentsForReview(){
 

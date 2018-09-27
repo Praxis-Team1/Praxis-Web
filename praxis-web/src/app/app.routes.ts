@@ -5,12 +5,15 @@ import { ValidatedataComponent } from './components/signUp/validatedata/validate
 import { LoginComponent } from './components/login/login.component';
 import { FinishSignUpComponent } from './components/signUp/finish-sign-up/finish-sign-up.component';
 import { MainmenuComponent } from './components/student/mainmenu/mainmenu.component';
+import { AdminmainmenuComponent } from './components/administrator/adminmainmenu/adminmainmenu.component';
 import { GradesComponent } from './components/student/grades/grades.component';
+import { InformationComponent } from './components/administrator/information/information.component';
 
 import {
   AuthGuardService as AuthGuard
 } from './services/auth-guard.service';
 import { LoginGuardService as LoginGuard } from './services/login-guard';
+
 export const ROUTES: Routes = [
 
     /*Faltaria login */
@@ -21,6 +24,8 @@ export const ROUTES: Routes = [
     { path: 'student/signUp/step4', component:  FinishSignUpComponent, canActivate: [LoginGuard] },
     { path: 'student/dashboard', component:  MainmenuComponent, canActivate: [AuthGuard]},
     { path: 'student/dashboard/grades', component: GradesComponent, canActivate: [AuthGuard] },
+    { path: 'admin/admissions', component: AdminmainmenuComponent, canActivate: [AuthGuard] },
+    { path: 'admin/admissions/information', component: InformationComponent, canActivate: [AuthGuard]},
     { path: '', pathMatch: 'full', redirectTo: 'student/login' },
     { path: '**', pathMatch: 'full', redirectTo: 'student/login' }
 ];

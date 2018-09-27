@@ -3,26 +3,36 @@ import { RouterModule, Router, ActivatedRoute} from '@angular/router';
 import * as RecordRTC from 'recordrtc/RecordRTC.min';
 import { helperService } from '../../../services/helperService';
 import { BootstrapAlertService } from 'ngx-bootstrap-alert-service';
+
 @Component({
   selector: 'app-recordvideo',
   templateUrl: './recordvideo.component.html',
   styleUrls: ['./recordvideo.component.css']
 })
-export class RecordvideoComponent implements AfterViewInit {
 
-  ngOnInit() {
-  }
+export class RecordvideoComponent implements AfterViewInit {
 
   private stream: MediaStream;
   private recordRTC: any;
   private urlVideoRecorded: any;
   private student;
+  private step;
+
+  ngOnInit() {
+    this.step = this.helperService.getStepValidation();
+    console.log(this.step);
+    if(this.step < 2){
+      console.log(this.step);
+      this.router.navigate(['student/signUp/step1'])
+    }
+  }
 
  @ViewChild('video') video;
 
  constructor(private router: Router,private helperService: helperService,
    private bootstrapAlertService: BootstrapAlertService) {
     this.student = this.helperService.getStudentOfSignUp();
+    this.step = 0;
     console.log("En video " , this.helperService.getStudentOfSignUp() );
  }
 
