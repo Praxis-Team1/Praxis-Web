@@ -22,6 +22,7 @@ export class FinishSignUpComponent implements OnInit {
   ngOnInit() {
   }
 
+
   goToNextStep(){
     this.router.navigate([''])
   }
