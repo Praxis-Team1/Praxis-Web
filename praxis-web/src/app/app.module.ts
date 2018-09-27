@@ -37,7 +37,7 @@ import { generalService } from './services/generalService';
 import { MainmenuComponent } from './components/student/mainmenu/mainmenu.component';
 import { GradesComponent } from './components/student/grades/grades.component';
 
-import { ErrorInterceptor } from './services/ErrorInterceptor';
+///import { ErrorInterceptor } from './services/ErrorInterceptor';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { LoginGuardService } from './services/login-guard';
@@ -52,7 +52,9 @@ import { TeachermainmenuComponent } from './components/teacher/teachermainmenu/t
 
 
 export function tokenGetter() {
-  console.log(localStorage.getItem('token'));
+  if(!localStorage.getItem('token')){
+     return "";
+  }
 
   return localStorage.getItem('token');
 }
@@ -85,11 +87,9 @@ export function tokenGetter() {
     JwtModule.forRoot({
     config: {
       tokenGetter: tokenGetter,
-      whitelistedDomains: new Array(new RegExp('^null$')),
-      blacklistedRoutes: [/*environment.urlserver+"/auth"
-                        /*  environment.urlserver+"/students"*/
-                      ],
-     authScheme: "JWT"
+      whitelistedDomains: [],
+      blacklistedRoutes: [
+                      ]
     }
   })
   ],
@@ -103,7 +103,7 @@ export function tokenGetter() {
      AuthGuardService,
      LoginGuardService,
      admissionsService,
-     AdminmainmenuComponent,
+     AdminmainmenuComponent/*,
 
      {
          provide: HTTP_INTERCEPTORS,
@@ -112,7 +112,7 @@ export function tokenGetter() {
          },
          multi: true,
          deps: [Router]
-      }
+      }*/
   ],
   bootstrap: [AppComponent]
 })

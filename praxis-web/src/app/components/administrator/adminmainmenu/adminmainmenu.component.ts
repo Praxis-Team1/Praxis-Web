@@ -27,6 +27,8 @@ export class AdminmainmenuComponent implements OnInit {
       const datos =JSON.parse(JSON.stringify(data));
       this.students = datos;
 
+      this.ngOnInit();
+
       },
       (error) => {
         console.log("Error", error);

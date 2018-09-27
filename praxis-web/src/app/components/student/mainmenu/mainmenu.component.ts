@@ -55,6 +55,9 @@ export class MainmenuComponent implements OnInit {
                 console.log(this.sessions[i].name);
             }
 
+            this.ngOnInit();
+
+
          } ,
          (error) => {
              console.log(error);
