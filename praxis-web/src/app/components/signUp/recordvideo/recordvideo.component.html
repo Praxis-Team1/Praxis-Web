@@ -30,6 +30,11 @@
     <div class="embed-responsive embed-responsive-16by9">
       <video #video class="video"></video>
     </div>
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" [style.width]="this.helperService.percentageLoading + '%'">
+          {{this.helperService.percentageLoading}} Uploading video.
+        </div>
+    </div>
     <br>
     <div class="row">
       <div class="col-xs-4 mx-auto">

@@ -4,6 +4,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { helperService } from '../../../services/helperService';
 import { Student } from '../../../schemas/student';
 import { httpService } from '../../../services/httpService';
+import { storageVideoService } from '../../../services/storagevideoService';
+import { BootstrapAlertService } from 'ngx-bootstrap-alert-service';
 
 @Component({
   selector: 'app-validatedata',
@@ -12,15 +14,17 @@ import { httpService } from '../../../services/httpService';
 })
 export class ValidatedataComponent implements OnInit {
 
+
   private urlvideo: any;
   private mensaje: string;
   private student: Student;
   private step: number;
 
   constructor(private router: Router, private sanitizer:  DomSanitizer,
-     private helperService: helperService, private http: httpService) {
-    this.student = this.helperService.getStudentOfSignUp();
-    console.log("En validate data " , this.student);
+     private helperService: helperService, private http: httpService,
+      private storageS: storageVideoService, private popup: BootstrapAlertService ) {
+       this.student = this.helperService.getStudentOfSignUp();
+
   }
 
   @ViewChild('video') video;
@@ -49,27 +53,37 @@ export class ValidatedataComponent implements OnInit {
   goToNextStep(){
     //Falta.
    let date: string;
-  
-   date = new Date(this.student.birthdate).toISOString();
-   
-   this.student.birthdate = date;
+   if(!date){
+     date = new Date(this.student.birthdate).toISOString();
+     this.student.birthdate = date;
+   }
 
-   console.log(this.student);
+   //console.log(this.student);
 
    this.http.signUp(this.student).subscribe(
-
       (data ) => {
-        console.log("Data", data);
+        //console.log(data.message);
+
+        console.log(data);
+
+        let dataJson = JSON.parse(JSON.stringify(data));
+
+        console.log("EL MENSAJE", dataJson.message);
+
+         if(dataJson.message == "correctly saved"){
+
+           this.popup.showSucccess('User corretly saved');
+           this.router.navigate(['student/signUp/step4']);
+         }
+         else{
+           this.popup.showError('Error with data or server');
+         }
       },
-
       (error) => {
-         
-        console.log("Error" ,error);
+          this.popup.showError('Error with data or server');
       }
-   )
+   );
 
-   
-   this.router.navigate(['student/signUp/step4']);
   }
 
   goToPrevStep(){

@@ -7,6 +7,9 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { BootstrapAlertModule } from 'ngx-bootstrap-alert-service';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { AppComponent } from './app.component';
 import { StudentinfoComponent } from './components/signUp/studentinfo/studentinfo.component';
@@ -20,6 +23,11 @@ import { MainmenuNavbarComponent } from './components/shared/mainmenu-navbar/mai
 // Routes.
 import { ROUTES } from './app.routes';
 
+//Variables.
+
+
+import { environment } from '../environments/environment';
+
 
 // Services
 import { helperService } from './services/helperService';
@@ -28,12 +36,25 @@ import { httpService } from './services/httpService';
 import { generalService } from './services/generalService';
 import { MainmenuComponent } from './components/student/mainmenu/mainmenu.component';
 import { GradesComponent } from './components/student/grades/grades.component';
+
+import { ErrorInterceptor } from './services/ErrorInterceptor';
+import { AuthService } from './services/auth.service';
+import { AuthGuardService } from './services/auth-guard.service';
+import { LoginGuardService } from './services/login-guard';
+
+
+
 import { AdminmainmenuComponent } from './components/administrator/adminmainmenu/adminmainmenu.component';
 import { admissionsService } from './services/admissionsService';
 import { InformationComponent } from './components/administrator/information/information.component';
 
 
 
+export function tokenGetter() {
+  console.log(localStorage.getItem('token'));
+
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -59,17 +80,32 @@ import { InformationComponent } from './components/administrator/information/inf
     HttpModule,
     HttpClientModule,
     BootstrapAlertModule,
-   // HttpClient
-
+    JwtModule.forRoot({
+    config: {
+      tokenGetter: tokenGetter,
+      whitelistedDomains: new Array(new RegExp('^null$')),
+      blacklistedRoutes: [/*environment.urlserver+"/auth"
+                        /*  environment.urlserver+"/students"*/
+                      ],
+     authScheme: "JWT"
+    }
+  })
   ],
   providers: [
     helperService,
     storageVideoService,
     httpService,
     generalService,
-    admissionsService,
-    AdminmainmenuComponent
-
+    {
+       provide: HTTP_INTERCEPTORS,
+       useClass: ErrorInterceptor,
+       multi: true
+     },
+     JwtHelperService,
+     AuthService,
+     AuthGuardService,
+     LoginGuardService,
+     admissionsService
   ],
   bootstrap: [AppComponent]
 })
