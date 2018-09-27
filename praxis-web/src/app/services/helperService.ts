@@ -73,8 +73,6 @@ export class helperService {
        };
        var url = this.bucket.getSignedUrl('getObject', params);
        return url;
-
    }
-
 
 }

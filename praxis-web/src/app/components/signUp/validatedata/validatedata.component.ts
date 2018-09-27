@@ -50,9 +50,6 @@ export class ValidatedataComponent implements OnInit {
      this.student.birthdate = date;
    }
 
-
-
-
    //console.log(this.student);
 
    this.http.signUp(this.student).subscribe(

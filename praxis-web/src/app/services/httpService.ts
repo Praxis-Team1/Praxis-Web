@@ -4,11 +4,9 @@ import { Injectable } from '@angular/core';
 import { Student } from '../schemas/student';
 import { environment } from '../../environments/environment';
 
-
+import {Observable} from 'rxjs/Rx';
 @Injectable()
 export class httpService {
-
-
 
 
   static httpOptions = {
@@ -31,17 +29,9 @@ export class httpService {
   /*Aqui debeberia ir la peticion para hacer el login, pero pondremos algo de prueba*/
   /*Se simula el backend */
 
-  login(email: String, password: String): boolean{
-
-      let user = {
-        email: email,
-        password: password
-      }
-        if(email== "test@unal.edu.co" && password == "test"){
-              return true;
-        }
+  login(email: string, password: string) {
+        return this.http.post<any>(`${environment.urlserver}/auth`, { email, password });
   }
-
 
   signUp(student: Student){
     return this.http.post<Student>(environment.urlserver+"/students",
