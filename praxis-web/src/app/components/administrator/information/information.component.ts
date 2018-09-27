@@ -43,7 +43,7 @@ export class InformationComponent implements OnInit {
     this.name = params['name'];
     this.birthdate = params['birthdate'];
     this.email = params['email'];
-    this.password = params['password'];
+    // this.password = params['password'];
     this.typeOfPraxis = params['typeOfPraxis'];
     this.biography = params['biography'];
     this.documentType = params['documentType'];

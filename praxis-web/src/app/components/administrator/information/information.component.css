@@ -112,7 +112,7 @@ span.input-group-addon i {
 }
 
 .shadow {
-    text-shadow: 2px 2px #070505ea;
+    text-shadow: 1px 1px 1px #070505ea;
 }
 
 @media (max-width: 767px) {
