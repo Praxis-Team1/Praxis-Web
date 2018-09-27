@@ -3,6 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { AdminmainmenuComponent } from './../adminmainmenu/adminmainmenu.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { helperService } from './../../../services/helperService';
+import { generalService } from '../../../services/generalService';
 
 @Component({
   selector: 'app-information',
@@ -38,7 +39,13 @@ export class InformationComponent implements OnInit {
     video.autoplay = false;
   }
 
-  constructor(private AdminmainmenuComponent: AdminmainmenuComponent, private route: ActivatedRoute, private router: Router, private helperService: helperService, private sanitizer:  DomSanitizer) {
+  constructor(private AdminmainmenuComponent: AdminmainmenuComponent, private route: ActivatedRoute, private router: Router, private helperService: helperService, private sanitizer:  DomSanitizer,
+   public generalService: generalService ) {
+
+     this.generalService.statusNavBarInicial = true;
+     this.generalService.statusNavBarMenuStudent = false;
+
+
     this.route.queryParams.subscribe(params => {
     this.name = params['name'];
     this.birthdate = params['birthdate'];

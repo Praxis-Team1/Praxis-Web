@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
             this.generalService.setstatusNavBarInicial(true);
             this.generalService.setstatusNavBarMenuStudent(false);
             this.bootstrapAlertService.showSucccess(`Welcome to PSL - PRAXIS ${this.email}`);
-            this.router.navigate(['student/dashboard']);
+            this.router.navigate(['admin/admissions']);
 
          },
          (error) => {

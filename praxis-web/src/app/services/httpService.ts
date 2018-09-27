@@ -62,7 +62,7 @@ export class httpService {
 
   getStudentsForReview(){
 
-    return this.http.get(`${environment.urlserver}/students/review`);
+    return this.http.get(`${environment.urlserver}/students/review`, httpService.httpOptionsToken);
   }
 
 }

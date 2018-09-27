@@ -96,16 +96,12 @@ export function tokenGetter() {
     storageVideoService,
     httpService,
     generalService,
-    {
-       provide: HTTP_INTERCEPTORS,
-       useClass: ErrorInterceptor,
-       multi: true
-     },
      JwtHelperService,
      AuthService,
      AuthGuardService,
      LoginGuardService,
-     admissionsService
+     admissionsService,
+     AdminmainmenuComponent
   ],
   bootstrap: [AppComponent]
 })
