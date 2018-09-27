@@ -10,9 +10,9 @@ import { RouterModule, Router, ActivatedRoute} from '@angular/router';
 export class MainmenuComponent implements OnInit {
 
 
-  public grades: string ="grades 1";
-  public attendance: string = "attendance 2";
-  public survey: string = "survey 3";
+  public grades: string = 'grades 1';
+  public attendance: string = 'attendance 2';
+  public survey: string = 'survey 3';
 
   constructor(private router: Router) { }
 

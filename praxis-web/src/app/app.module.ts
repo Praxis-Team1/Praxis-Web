@@ -17,18 +17,20 @@ import { InitialNavbarComponent } from './components/shared/initial-navbar/initi
 import { FinishSignUpComponent } from './components/signUp/finish-sign-up/finish-sign-up.component';
 import { MainmenuNavbarComponent } from './components/shared/mainmenu-navbar/mainmenu-navbar.component';
 
-//Routes.
+// Routes.
 import { ROUTES } from './app.routes';
 
 
-//Services
+// Services
 import { helperService } from './services/helperService';
 import { storageVideoService } from './services/storagevideoService';
 import { httpService } from './services/httpService';
 import { generalService } from './services/generalService';
 import { MainmenuComponent } from './components/student/mainmenu/mainmenu.component';
 import { GradesComponent } from './components/student/grades/grades.component';
-
+import { AdminmainmenuComponent } from './components/administrator/adminmainmenu/adminmainmenu.component';
+import { admissionsService } from './services/admissionsService';
+import { InformationComponent } from './components/administrator/information/information.component';
 
 
 
@@ -44,7 +46,9 @@ import { GradesComponent } from './components/student/grades/grades.component';
     FinishSignUpComponent,
     MainmenuNavbarComponent,
     MainmenuComponent,
-    GradesComponent
+    GradesComponent,
+    AdminmainmenuComponent,
+    InformationComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +66,9 @@ import { GradesComponent } from './components/student/grades/grades.component';
     helperService,
     storageVideoService,
     httpService,
-    generalService
+    generalService,
+    admissionsService,
+    AdminmainmenuComponent
 
   ],
   bootstrap: [AppComponent]
