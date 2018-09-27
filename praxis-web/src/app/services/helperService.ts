@@ -8,13 +8,10 @@ import { environment } from '../../environments/environment';
 export class helperService {
 
    public studentSignUp: Student= new Student();
-
+   public step: number=1;
    public navbar: Boolean = false;
-
-
    public urlVideoToShow: string;
-   
-
+  
    public  bucket = new S3(
      {
        accessKeyId: environment.accessKeyId,
@@ -22,14 +19,22 @@ export class helperService {
        region: environment.region
      }
    );
-
+  
    setStudentOfSignUp(student: Student){
       this.studentSignUp = student;
    }
 
-
    getStudentOfSignUp(): Student{
       return this.studentSignUp;
+   }
+
+  setStepValidation(step: number) {
+     this.step = step + 1;
+     console.log(step);
+   }
+
+   getStepValidation(): number{
+     return this.step;
    }
 
    uploadVideo(file: any, nameKey: string){
@@ -58,8 +63,5 @@ export class helperService {
        };
        var url = this.bucket.getSignedUrl('getObject', params);
        return url;
-
    }
-
-
 }
