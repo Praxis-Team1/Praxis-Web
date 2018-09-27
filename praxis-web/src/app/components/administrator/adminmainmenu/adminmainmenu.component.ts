@@ -46,7 +46,8 @@ export class AdminmainmenuComponent implements OnInit {
         documentType: student.user.documentType,
         documentNumber: student.user.documentNumber,
         university: student.university,
-        semester: student.semester
+        semester: student.semester,
+        userId: student.userId
       }
   };
     this.student = student;

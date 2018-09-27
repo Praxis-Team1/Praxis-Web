@@ -4,6 +4,7 @@ import { AdminmainmenuComponent } from './../adminmainmenu/adminmainmenu.compone
 import { ActivatedRoute, Router } from '@angular/router';
 import { helperService } from './../../../services/helperService';
 import { generalService } from '../../../services/generalService';
+import { httpService } from '../../../services/httpService';
 
 @Component({
   selector: 'app-information',
@@ -24,6 +25,7 @@ export class InformationComponent implements OnInit {
   videoUrl: any;
   documentType: any;
   documentNumber: any;
+  userId: any;
 
   @ViewChild('video') video;
 
@@ -40,7 +42,7 @@ export class InformationComponent implements OnInit {
   }
 
   constructor(private AdminmainmenuComponent: AdminmainmenuComponent, private route: ActivatedRoute, private router: Router, private helperService: helperService, private sanitizer:  DomSanitizer,
-   public generalService: generalService ) {
+   public generalService: generalService, public http: httpService ) {
 
      this.generalService.statusNavBarInicial = true;
      this.generalService.statusNavBarMenuStudent = false;
@@ -57,6 +59,7 @@ export class InformationComponent implements OnInit {
     this.documentNumber = params['documentNumber'];
     this.university = params['university'];
     this.semester = params['semester'];
+    this.userId = params['userId'];
     this.videoUrl = this.helperService.getFileUrl(this.email + '.mp4');
     // console.log(this.email);
     // console.log(this.name, 'ajsdasdasd');
@@ -68,11 +71,15 @@ export class InformationComponent implements OnInit {
   }
 
   acceptStudent(){
-    console.log('Accept');
+    this.http.AcceptOrRejectStudent(this.userId, true).subscribe(data => {
+      console.log(data);
+    });
   }
 
   denyStudent(){
-    console.log('Deny');
+    this.http.AcceptOrRejectStudent(this.userId, false).subscribe(data => {
+       console.log(data);
+    });
   }
 
   ngOnInit() {

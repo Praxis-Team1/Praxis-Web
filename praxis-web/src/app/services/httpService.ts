@@ -69,7 +69,8 @@ export class httpService {
 
     ///students/admissionResult/:id/:result
 
-
+    console.log("user id ", userid);
+    console.log("veredict ", veredict);
     return this.http.get(`${environment.urlserver}/students/admissionResult/${userid}/${veredict}`, httpService.httpOptionsToken);
   }
 }
