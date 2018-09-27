@@ -28,6 +28,7 @@ import { httpService } from './services/httpService';
 import { generalService } from './services/generalService';
 import { MainmenuComponent } from './components/student/mainmenu/mainmenu.component';
 import { GradesComponent } from './components/student/grades/grades.component';
+import { AdminmainmenuComponent } from './components/administrator/adminmainmenu/adminmainmenu.component';
 
 
 
@@ -44,7 +45,8 @@ import { GradesComponent } from './components/student/grades/grades.component';
     FinishSignUpComponent,
     MainmenuNavbarComponent,
     MainmenuComponent,
-    GradesComponent
+    GradesComponent,
+    AdminmainmenuComponent
   ],
   imports: [
     BrowserModule,
