@@ -1,6 +1,15 @@
 <div class="container mt-5">
 
     <div class="row justify-content-md-center">
+      <div class="col-3 mx-auto my-auto">
+        <button type="button" class="btn btn-primary" (click)="goToPrevStep()">Previous</button>
+      </div>
+      <div class="col-0.5 mx-auto my-auto">
+        <button type="button" class="btn btn-primary" style="display:none;">Next</button>
+      </div>
+    </div>
+
+    <div class="row justify-content-md-center">
         <h4>Information of the Student</h4>
     </div>
 
@@ -62,9 +71,9 @@
         </div>
     </div>
     <div class="row mt-2 mr-2 ml-2 justify-content-md-center">
-        <div class="col-2 mx-auto my-auto pulse-btn">
-            <button class="btn btn-success ">Accept</button></div>
-        <div class="col-2 mx-auto my-auto pulse-btn">
-            <button class="btn-danger btn">Deny</button></div>
+        <div class="col-3 mx-auto my-auto pulse-btn">
+            <button class="btn btn-success " (click)="acceptStudent()">Accept</button></div>
+        <div class="col-3 mx-auto my-auto pulse-btn">
+            <button class="btn-danger btn" (click)="denyStudent()">Deny</button></div>
     </div>
 </div>

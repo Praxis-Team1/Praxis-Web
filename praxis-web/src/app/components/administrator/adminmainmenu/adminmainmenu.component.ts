@@ -6,7 +6,6 @@ import { helperService } from '../../../services/helperService';
 import { Student } from '../../../schemas/student';
 import { httpService } from '../../../services/httpService';
 
-
 @Component({
   selector: 'app-adminmainmenu',
   templateUrl: './adminmainmenu.component.html',
@@ -14,15 +13,16 @@ import { httpService } from '../../../services/httpService';
 })
 export class AdminmainmenuComponent implements OnInit {
   constructor(private router: Router, private sanitizer: DomSanitizer, private http: httpService) {
-    /** 
+    /**
         this.student = this.admissionsService.getStudents();
         console.log('estudiantes ', this.student);
     */
-    console.log(this.students[0].name);
+    // console.log(this.students[0].name);
   }
 
   public index: number;
   public student: Student;
+  //Should ask to the backend for the students
   public students = [
     {
       name: 'carlos',
@@ -36,7 +36,6 @@ export class AdminmainmenuComponent implements OnInit {
       documentNumber: 114214123,
       university: 'Unal',
       semester: 8,
-
     },
     {
       name: 'arbe',
@@ -50,7 +49,6 @@ export class AdminmainmenuComponent implements OnInit {
       documentNumber: 114214123,
       university: 'Unal',
       semester: 8,
-
     },
     {
       name: 'santiago',
@@ -63,7 +61,6 @@ export class AdminmainmenuComponent implements OnInit {
       documentNumber: 114214123,
       university: 'Unal',
       semester: 8,
-
     },
     {
       name: 'ella',
@@ -76,7 +73,6 @@ export class AdminmainmenuComponent implements OnInit {
       documentNumber: 114214123,
       university: 'Unal',
       semester: 8,
-
     },
     {
       name: 'ellos',
@@ -89,10 +85,9 @@ export class AdminmainmenuComponent implements OnInit {
       documentNumber: 114214123,
       university: 'Unal',
       semester: 8,
-
     }
   ];
-  
+
   passIndexValue(student: Student) {
     let navigationExtras: NavigationExtras = {
       queryParams: {
@@ -111,10 +106,9 @@ export class AdminmainmenuComponent implements OnInit {
   };
     this.student = student;
     this.router.navigate(['admin/admissions/information'], navigationExtras );
-    console.log(student);
+    // console.log(student);
   }
 
- 
   ngOnInit() {
   }
 
