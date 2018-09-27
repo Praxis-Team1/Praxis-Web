@@ -8,7 +8,6 @@ import { httpService } from '../../../services/httpService';
 import { HttpClientModule, HttpClient, HttpHandler } from '@angular/common/http';
 import { BootstrapAlertService } from 'ngx-bootstrap-alert-service';
 
-
 import { RecordvideoComponent } from './recordvideo.component';
 
 describe('RecordvideoComponent', () => {
@@ -22,6 +21,7 @@ describe('RecordvideoComponent', () => {
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
+        RouterTestingModule
         RouterTestingModule,
       ],
       providers: [
@@ -32,7 +32,7 @@ describe('RecordvideoComponent', () => {
         BootstrapAlertService
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
