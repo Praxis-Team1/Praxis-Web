@@ -3,35 +3,36 @@
     <h1>PRAXIS Sessions Evaluation</h1>
     <div class="container-fluid" [hidden]="submitted">
 
-      <form class="was-validated" (ngSubmit)="onSubmit()" #surveyForm="ngForm">
+      <form class="was-validated" #surveyForm="ngForm" (ngSubmit)="onSubmit(surveyForm.value)"> <!-- [formGroup]="formdata" -->
+
         <div class="input-group input-group-sm mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text">Select session's date.</span>
           </div>
           <label for="date"></label>
-          <input type="date" class="form-control" id="date" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
+          <input type="date" class="form-control" id="date" aria-label="Small" aria-describedby="inputGroup-sizing-sm" [(ngModel)]="model.date" required>
         </div>
 
         <h5>Select tutor's name</h5>
         <label>
-          <select class="custom-select custom-select-lg mb-3" required>
+          <select class="custom-select custom-select-lg mb-3" [(ngModel)]="model.tutorName" required>
             <option *ngFor="let nameT of tutors" [value]="nameT">{{nameT}}</option>
           </select>
         </label>
 
         <h5>Select session type:</h5>
         <div class="custom-control custom-radio">
-          <input type="radio" id="virtual" name="sessionType" class="custom-control-input" required>
+          <input type="radio" id="virtual" name="sessionType" class="custom-control-input" [(ngModel)]="model.sessionType" required>
           <label class="custom-control-label" for="virtual"><b>Virtual</b></label>
         </div>
         <div class="custom-control custom-radio">
-          <input type="radio" id="face-to-face" name="sessionType" class="custom-control-input" required>
+          <input type="radio" id="face-to-face" name="sessionType" class="custom-control-input" [(ngModel)]="model.sessionType" required>
           <label class="custom-control-label" for="face-to-face"><b>Face-to-face</b></label>
         </div>
 
 
         <h5>Session quality</h5>
-        <table class="table table-striped">
+        <table class="table table-striped" [(ngModel)]="model.table1">
           <thead>
           <tr>
             <th scope="col"></th>
@@ -108,7 +109,7 @@
         </table>
 
         <h5>Tutor evaluation</h5>
-        <table class="table table-striped">
+        <table class="table table-striped" [(ngModel)]="model.table2">
           <thead>
           <tr>
             <th scope="col"></th>
@@ -203,7 +204,7 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">Was the language and tone of voice appropriate?</th>
+            <th scope="row">Were the language and tone of voice appropriate?</th>
             <td>
               <div class="custom-control custom-radio">
                 <input type="radio" id="deficient5" name="languageAndVoice" class="custom-control-input" required>
@@ -228,11 +229,11 @@
 
         <h5>In general, the session was...</h5>
         <div class="custom-control custom-radio">
-          <input type="radio" id="satisfactory" name="sessionWas" class="custom-control-input" required>
+          <input type="radio" id="satisfactory" name="sessionWas" class="custom-control-input" [(ngModel)]="model.sessionWas" required>
           <label class="custom-control-label" for="satisfactory"><b>Satisfactory</b></label>
         </div>
         <div class="custom-control custom-radio">
-          <input type="radio" id="unsatisfactory" name="sessionWas" class="custom-control-input" required>
+          <input type="radio" id="unsatisfactory" name="sessionWas" class="custom-control-input" [(ngModel)]="model.sessionWas" required>
           <label class="custom-control-label" for="unsatisfactory"><b>Unsatisfactory</b></label>
         </div>
 
@@ -241,13 +242,17 @@
           <div class="input-group-prepend">
           </div>
           <label>
-            <textarea class="form-control" aria-label="With textarea" required></textarea>
+            <textarea class="form-control" aria-label="With textarea" [(ngModel)]="model.obsAndSugg" required></textarea>
           </label>
         </div>
 
         <button class="btn btn-primary" type="submit" [disabled]="!surveyForm.form.valid">Submit form</button>
 
       </form>
+      <div class="pre">
+        <h2>Model: </h2>
+        {{getSurvey}}
+      </div>
     </div>
   </div>
 </div>
