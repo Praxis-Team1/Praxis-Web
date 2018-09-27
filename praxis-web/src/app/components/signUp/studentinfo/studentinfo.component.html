@@ -36,7 +36,6 @@
                     <div class="form-group">
                         <label for="name" class="control-label">Your Name</label>
                         <div class="input-group" id="name">
-                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                             <input type="string" [(ngModel)]="this.student.name" class="form-control" name="name" formControlName="name" />
                         </div>
                         <div class="alert alert-danger" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched">
@@ -104,7 +103,7 @@
                     <div class="form-group">
                         <label for="password" class="control-label">Password</label>
                         <div class="input-group" id="password">
-                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+
                             <input type="password" [(ngModel)]="this.student.password" class="form-control" name="password" formControlName="password" />
                         </div>
                         <div class="alert alert-danger" *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched">
@@ -115,7 +114,6 @@
                     <div class="form-group">
                         <label for="confirm" class="control-label">Confirm Password</label>
                         <div class="input-group" id="confirm">
-                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
                             <input type="password" [(ngModel)]="this.verificationPass" class="form-control" name="confirm" formControlName="cpassword" />
                         </div>
                         <div class="alert alert-danger" *ngIf="rForm.controls.cpassword.errors?.MatchPassword">Password not match, at least one uppercase, one lowercase and minimum 8 characters</div>

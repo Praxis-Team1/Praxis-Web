@@ -5,6 +5,8 @@ import { RouterModule, Router} from '@angular/router';
 import { BootstrapAlertService } from 'ngx-bootstrap-alert-service';
 import { generalService } from '../../services/generalService';
 import { helperService } from '../../services/helperService';
+import { JwtHelperService } from '@auth0/angular-jwt';
+
 import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map'
 @Component({
@@ -56,15 +58,34 @@ export class LoginComponent implements OnInit {
 
             localStorage.setItem("token", token);
 
+            const helper = new JwtHelperService();
+
+            const decodedToken = helper.decodeToken(token);
+
+            console.log("decodificado", decodedToken);
+
             this.generalService.setstatusNavBarInicial(true);
             this.generalService.setstatusNavBarMenuStudent(false);
             this.bootstrapAlertService.showSucccess(`Welcome to PSL - PRAXIS ${this.email}`);
-            this.router.navigate(['admin/admissions']);
+            
+            console.log(typeof decodedToken.roles);
+            if(decodedToken.roles.indexOf('admin')>= 0){
+              console.log("es un admin");
+              this.router.navigate(['admin/admissions']);
+            }
+            else if( decodedToken.roles.indexOf('student')>= 0){
+              console.log("es un student");
+              this.router.navigate(['student/dashboard']);
+            }
+            else{
+              console.log("es un teacher");
+              this.router.navigate(['teacher/dashboard']);
+            }
 
          },
          (error) => {
 
-            console.log("entro 2 " ,error);
+            this.bootstrapAlertService.showError(`Credentials are invalid`);
          }
        )
     }

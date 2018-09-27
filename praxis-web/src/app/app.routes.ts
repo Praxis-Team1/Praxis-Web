@@ -8,7 +8,7 @@ import { MainmenuComponent } from './components/student/mainmenu/mainmenu.compon
 import { AdminmainmenuComponent } from './components/administrator/adminmainmenu/adminmainmenu.component';
 import { GradesComponent } from './components/student/grades/grades.component';
 import { InformationComponent } from './components/administrator/information/information.component';
-
+import { TeachermainmenuComponent } from './components/teacher/teachermainmenu/teachermainmenu.component';
 import {
   AuthGuardService as AuthGuard
 } from './services/auth-guard.service';
@@ -26,6 +26,7 @@ export const ROUTES: Routes = [
     { path: 'student/dashboard/grades', component: GradesComponent, canActivate: [AuthGuard] },
     { path: 'admin/admissions', component: AdminmainmenuComponent, canActivate: [AuthGuard]},
     { path: 'admin/admissions/information', component: InformationComponent, canActivate: [AuthGuard]},
+    { path: 'teacher/dashboard', component: TeachermainmenuComponent, canActivate: [AuthGuard]},
     { path: '', pathMatch: 'full', redirectTo: 'student/login' },
     { path: '**', pathMatch: 'full', redirectTo: 'student/login' }
 ];

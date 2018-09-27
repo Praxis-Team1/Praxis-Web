@@ -65,4 +65,11 @@ export class httpService {
     return this.http.get(`${environment.urlserver}/students/review`, httpService.httpOptionsToken);
   }
 
+  AcceptOrRejectStudent(userid: number,veredict: boolean){
+
+    ///students/admissionResult/:id/:result
+
+
+    return this.http.get(`${environment.urlserver}/students/admissionResult/${userid}/${veredict}`, httpService.httpOptionsToken);
+  }
 }

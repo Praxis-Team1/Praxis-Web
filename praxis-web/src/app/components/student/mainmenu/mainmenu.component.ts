@@ -3,6 +3,8 @@ import { RouterModule, Router, ActivatedRoute} from '@angular/router';
 import { generalService } from '../../../services/generalService';
 import { httpService } from '../../../services/httpService';
 import { Session } from '../../../schemas/session';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { Survey } from '../../../schemas/survey';
 
 @Component({
   selector: 'app-mainmenu',
@@ -15,8 +17,24 @@ export class MainmenuComponent implements OnInit {
   public grades: string = 'grades 1';
   public attendance: string = 'attendance 2';
   public survey: string = 'survey 3';
+  public tutors = ['David', 'Lia', 'Raul', 'Diego'];
+  public submitted = false;
+  
+
+  public date = new Date();
+
+  public sessionT = {
+    virtual: true,
+    faceToFace: false
+  }
 
   public sessions: any = [];
+
+  public sessionW = [{ value: 'Satisfactory', name: 'sessionWas' }, { value: 'Unsatisfactory', name: 'sessionWas' }];
+
+  private surveyForm: FormGroup;
+
+  //model = new Survey(1, this.date, this.tutors[0], this.sessionT, this.table1, this.table2, this.sessionW, 'Good session');
 
   constructor(private router: Router, private generalService: generalService, private http: httpService) {
          this.generalService.statusNavBarInicial = true;

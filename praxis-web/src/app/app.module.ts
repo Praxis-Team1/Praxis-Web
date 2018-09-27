@@ -47,6 +47,7 @@ import { LoginGuardService } from './services/login-guard';
 import { AdminmainmenuComponent } from './components/administrator/adminmainmenu/adminmainmenu.component';
 import { admissionsService } from './services/admissionsService';
 import { InformationComponent } from './components/administrator/information/information.component';
+import { TeachermainmenuComponent } from './components/teacher/teachermainmenu/teachermainmenu.component';
 
 
 
@@ -69,7 +70,8 @@ export function tokenGetter() {
     MainmenuComponent,
     GradesComponent,
     AdminmainmenuComponent,
-    InformationComponent
+    InformationComponent,
+    TeachermainmenuComponent
   ],
   imports: [
     BrowserModule,
@@ -101,7 +103,16 @@ export function tokenGetter() {
      AuthGuardService,
      LoginGuardService,
      admissionsService,
-     AdminmainmenuComponent
+     AdminmainmenuComponent,
+
+     {
+         provide: HTTP_INTERCEPTORS,
+         useFactory: function(router: Router) {
+           return new  ErrorInterceptor(router);
+         },
+         multi: true,
+         deps: [Router]
+      }
   ],
   bootstrap: [AppComponent]
 })
