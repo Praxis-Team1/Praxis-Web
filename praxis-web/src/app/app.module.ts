@@ -30,9 +30,6 @@ import { MainmenuComponent } from './components/student/mainmenu/mainmenu.compon
 import { GradesComponent } from './components/student/grades/grades.component';
 
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,15 +51,13 @@ import { GradesComponent } from './components/student/grades/grades.component';
     ReactiveFormsModule,
     HttpModule,
     HttpClientModule,
-    BootstrapAlertModule,
-   // HttpClient
-
+    BootstrapAlertModule
   ],
   providers: [
     helperService,
     storageVideoService,
     httpService,
-    generalService
+    generalService,
 
   ],
   bootstrap: [AppComponent]

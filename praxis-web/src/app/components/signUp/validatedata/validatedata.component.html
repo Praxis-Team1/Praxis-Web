@@ -84,6 +84,12 @@
             <div class="embed-responsive embed-responsive-16by9">
                 <video id="video" #video [src]=getSantizeUrl(this.helperService.urlVideoToShow)></video>
             </div>
+
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped bg-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:{{this.helperService.percentageLoading}}">
+                  {{this.helperService.percentageLoading}} Uploading video.
+                </div>
+            </div>
         </div>
     </div>
 </div>

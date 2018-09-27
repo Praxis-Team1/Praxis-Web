@@ -26,10 +26,6 @@ export class StudentinfoComponent implements OnInit {
  private passwordPattern: string = "/^(.{0,}(([a-zA-Z][^a-zA-Z])|([^a-zA-Z][a-zA-Z])).{4,})|(.{1,}(([a-zA-Z][^a-zA-Z])|([^a-zA-Z][a-zA-Z])).{3,})|(.{2,}(([a-zA-Z][^a-zA-Z])|([^a-zA-Z][a-zA-Z])).{2,})|(.{3,}(([a-zA-Z][^a-zA-Z])|([^a-zA-Z][a-zA-Z])).{1,})|(.{4,}(([a-zA-Z][^a-zA-Z])|([^a-zA-Z][a-zA-Z])).{0,})$/g";
 
 
-  
-  
-
-
 //
   constructor(public router: Router, public helperService: helperService,public formBuilder: FormBuilder, public http: httpService, private bootstrapAlertService: BootstrapAlertService) {
 
@@ -50,7 +46,7 @@ export class StudentinfoComponent implements OnInit {
         "email":["", [Validators.required, Validators.pattern(this.emailPattern)]],
         "document": ["", Validators.required],
         "semester": ["", [Validators.required, Validators.max(20)]],
-        "password": ["", Validators.required],
+        "password": ["", [Validators.required, Validators.min(8)]],
         "cpassword": ["", Validators.required],
         "date": ["", Validators.required],
         "biography": ["", Validators.required],
@@ -83,7 +79,7 @@ export class StudentinfoComponent implements OnInit {
     }else{
 
         console.log(this.student.name);
-        
+
 
         this.router.navigate(['student/signUp/step2']).then(
            data=>{

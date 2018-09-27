@@ -32,6 +32,11 @@ export class httpService {
   /*Se simula el backend */
 
   login(email: String, password: String): boolean{
+
+      let user = {
+        email: email,
+        password: password
+      }
         if(email== "test@unal.edu.co" && password == "test"){
               return true;
         }

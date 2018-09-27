@@ -4,7 +4,7 @@ import * as AWS from 'aws-sdk';
 
 @Injectable()
 export class storageVideoService {
-
+  
 /*
       uploadVideoToS3(file: any) {
           const filename = "video1";

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit,  ChangeDetectorRef} from '@angular/core';
 import { RouterModule, Router, ActivatedRoute} from '@angular/router';
 import * as RecordRTC from 'recordrtc/RecordRTC.min';
 import { helperService } from '../../../services/helperService';
@@ -20,7 +20,8 @@ export class RecordvideoComponent implements AfterViewInit {
 
  @ViewChild('video') video;
 
- constructor(private router: Router,private helperService: helperService, private bootstrapAlertService: BootstrapAlertService) {
+ constructor(private router: Router,private helperService: helperService,
+   private bootstrapAlertService: BootstrapAlertService) {
     this.student = this.helperService.getStudentOfSignUp();
     console.log("En video " , this.helperService.getStudentOfSignUp() );
  }
@@ -79,7 +80,7 @@ export class RecordvideoComponent implements AfterViewInit {
 
    this.urlVideoRecorded = video.src;
 
-      let fileObject = new File([recordedBlob], "", {
+    let fileObject = new File([recordedBlob], "", {
         type: 'video/webm'
     });
 
@@ -122,10 +123,10 @@ export class RecordvideoComponent implements AfterViewInit {
    try {
      var recordedBlob = recordRTC.getBlob();
 
-     
-     this.helperService.urlVideoToShow = this.urlVideoRecorded;  
+
+     this.helperService.urlVideoToShow = this.urlVideoRecorded;
      this.helperService.studentSignUp.videoUrl = this.helperService.getFileUrl(this.student.email+".mp4");
-     
+
      this.router.navigate(['student/signUp/step3']).then(
          data=>{
            console.log("Data ", data);
@@ -137,6 +138,7 @@ export class RecordvideoComponent implements AfterViewInit {
    }
    catch(error) {
       this.bootstrapAlertService.showError('You have to record the video before passing to next step');
+
    }
     //No se si es necesario cambiar esto.
   }
