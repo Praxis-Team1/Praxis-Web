@@ -8,7 +8,6 @@ import { httpService } from '../../../services/httpService';
 import { HttpClientModule, HttpClient, HttpHandler } from '@angular/common/http';
 import { BootstrapAlertService } from 'ngx-bootstrap-alert-service';
 
-
 import { FinishSignUpComponent } from './finish-sign-up.component';
 
 describe('FinishSignUpComponent', () => {
@@ -32,7 +31,7 @@ describe('FinishSignUpComponent', () => {
         BootstrapAlertService
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

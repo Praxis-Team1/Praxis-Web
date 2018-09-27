@@ -2,7 +2,8 @@ import { Component, OnInit , ViewChild,} from '@angular/core';
 import { RouterModule, Router} from '@angular/router';
 import { Student } from '../../../schemas/student';
 import { helperService } from '../../../services/helperService';
-import { FormBuilder, FormGroup, FormControl,  Validators } from '@angular/forms';
+
+import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule, FormBuilder  } from '@angular/forms';
 import { httpService } from '../../../services/httpService';
 import { PasswordValidator  } from './passwordValidator';
 import { BootstrapAlertService } from 'ngx-bootstrap-alert-service';
@@ -20,10 +21,9 @@ export class StudentinfoComponent implements OnInit {
   text = 'Sign up page';
   submitted = false;
 
-
-
-  private emailPattern: string = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
-
+ private emailPattern: string = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
+ private passwordPattern: string = "/^(.{0,}(([a-zA-Z][^a-zA-Z])|([^a-zA-Z][a-zA-Z])).{4,})|(.{1,}(([a-zA-Z][^a-zA-Z])|([^a-zA-Z][a-zA-Z])).{3,})|(.{2,}(([a-zA-Z][^a-zA-Z])|([^a-zA-Z][a-zA-Z])).{2,})|(.{3,}(([a-zA-Z][^a-zA-Z])|([^a-zA-Z][a-zA-Z])).{1,})|(.{4,}(([a-zA-Z][^a-zA-Z])|([^a-zA-Z][a-zA-Z])).{0,})$/g";
+  
 //
   constructor(public router: Router, public helperService: helperService,public formBuilder: FormBuilder, public http: httpService, private bootstrapAlertService: BootstrapAlertService) {
 
@@ -58,9 +58,6 @@ export class StudentinfoComponent implements OnInit {
       }
    );
 
-
-
-
   }
 
   ngOnInit() {
@@ -79,6 +76,9 @@ export class StudentinfoComponent implements OnInit {
        this.bootstrapAlertService.showError('You have to fill all the information in the form');
     }else{
 
+        console.log(this.student.name);
+        
+
         this.router.navigate(['student/signUp/step2']).then(
            data=>{
              console.log("Data ", data);
@@ -87,9 +87,6 @@ export class StudentinfoComponent implements OnInit {
              console.log("El error es " , error);
            }
        );
-
-
-
     }
 
 
