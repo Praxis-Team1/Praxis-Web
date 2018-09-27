@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { generalService } from '../../../services/generalService';
+
+
 
 @Component({
   selector: 'app-initial-navbar',
@@ -7,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InitialNavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public generalService: generalService) {
+
+
+  }
 
   ngOnInit() {
   }

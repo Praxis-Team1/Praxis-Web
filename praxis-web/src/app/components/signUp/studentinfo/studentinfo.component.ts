@@ -14,19 +14,18 @@ import { BootstrapAlertService } from 'ngx-bootstrap-alert-service';
   styleUrls: ['./studentinfo.component.css']
 })
 export class StudentinfoComponent implements OnInit {
-  private verificationPass: string;
 
+  public verificationPass: string;
+  public rForm: FormGroup;
+  private student;
   text = 'Sign up page';
   submitted = false;
-  private rForm: FormGroup;
-  private student;
 
-
-
-  private emailPattern: string = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
-
+ private emailPattern: string = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?";
+ private passwordPattern: string = "/^(.{0,}(([a-zA-Z][^a-zA-Z])|([^a-zA-Z][a-zA-Z])).{4,})|(.{1,}(([a-zA-Z][^a-zA-Z])|([^a-zA-Z][a-zA-Z])).{3,})|(.{2,}(([a-zA-Z][^a-zA-Z])|([^a-zA-Z][a-zA-Z])).{2,})|(.{3,}(([a-zA-Z][^a-zA-Z])|([^a-zA-Z][a-zA-Z])).{1,})|(.{4,}(([a-zA-Z][^a-zA-Z])|([^a-zA-Z][a-zA-Z])).{0,})$/g";
+  
 //
-  constructor(private router: Router, private helperService: helperService,private formBuilder: FormBuilder, private http: httpService, private bootstrapAlertService: BootstrapAlertService) {
+  constructor(public router: Router, public helperService: helperService,public formBuilder: FormBuilder, public http: httpService, private bootstrapAlertService: BootstrapAlertService) {
 
     this.student = this.helperService.getStudentOfSignUp();
 
@@ -59,9 +58,6 @@ export class StudentinfoComponent implements OnInit {
       }
    );
 
-
-
-
   }
 
   ngOnInit() {
@@ -80,6 +76,9 @@ export class StudentinfoComponent implements OnInit {
        this.bootstrapAlertService.showError('You have to fill all the information in the form');
     }else{
 
+        console.log(this.student.name);
+        
+
         this.router.navigate(['student/signUp/step2']).then(
            data=>{
              console.log("Data ", data);
@@ -88,9 +87,6 @@ export class StudentinfoComponent implements OnInit {
              console.log("El error es " , error);
            }
        );
-
-
-
     }
 
 
