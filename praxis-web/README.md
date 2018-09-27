@@ -24,7 +24,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 ### Deploying
 
-* Heroku app: [Linked-UN](https://linked-un.herokuapp.com).
+* Heroku app: [Praxis Team 1](https://praxis-team-1.herokuapp.com/student/login).
 
 ## Further help
 
