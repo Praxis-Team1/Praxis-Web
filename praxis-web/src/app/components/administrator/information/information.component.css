@@ -237,6 +237,10 @@ span.input-group-addon i {
     animation: pulse 1.5s cubic-bezier(0.66, 0.67, 0.83, 0.99) infinite;
 }
 
+.shadow {
+    text-shadow: 2px 2px #070505ea;
+}
+
 @media (max-width: 767px) {
     .pulse-btn .btn {
         font-size: 16px;
