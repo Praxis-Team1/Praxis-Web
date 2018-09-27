@@ -7,17 +7,19 @@ import { FinishSignUpComponent } from './components/signUp/finish-sign-up/finish
 import { MainmenuComponent } from './components/student/mainmenu/mainmenu.component';
 import { AdminmainmenuComponent } from './components/administrator/adminmainmenu/adminmainmenu.component';
 import { GradesComponent } from './components/student/grades/grades.component';
+import { InformationComponent } from './components/administrator/information/information.component';
 export const ROUTES: Routes = [
 
     /*Faltaria login */
     { path: 'student/login', component: LoginComponent, pathMatch: 'full' },
     { path: 'student/signUp/step1', component: StudentinfoComponent },
     { path: 'student/signUp/step2', component: RecordvideoComponent },
-    { path: 'student/signUp/step3', component:  ValidatedataComponent },
-    { path: 'student/signUp/step4', component:  FinishSignUpComponent },
-    { path: 'student/dashboard', component:  MainmenuComponent},
+    { path: 'student/signUp/step3', component: ValidatedataComponent },
+    { path: 'student/signUp/step4', component: FinishSignUpComponent },
+    { path: 'student/dashboard', component: MainmenuComponent },
     { path: 'student/dashboard/grades', component: GradesComponent },
     { path: 'admin/admissions', component: AdminmainmenuComponent },
+    { path: 'admin/admissions/information', component: InformationComponent },
     { path: '', pathMatch: 'full', redirectTo: 'student/login' },
     { path: '**', pathMatch: 'full', redirectTo: 'student/login' }
 ];

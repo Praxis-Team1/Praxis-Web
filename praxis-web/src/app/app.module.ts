@@ -29,7 +29,8 @@ import { generalService } from './services/generalService';
 import { MainmenuComponent } from './components/student/mainmenu/mainmenu.component';
 import { GradesComponent } from './components/student/grades/grades.component';
 import { AdminmainmenuComponent } from './components/administrator/adminmainmenu/adminmainmenu.component';
-
+import { admissionsService } from './services/admissionsService';
+import { InformationComponent } from './components/administrator/information/information.component';
 
 
 
@@ -46,7 +47,8 @@ import { AdminmainmenuComponent } from './components/administrator/adminmainmenu
     MainmenuNavbarComponent,
     MainmenuComponent,
     GradesComponent,
-    AdminmainmenuComponent
+    AdminmainmenuComponent,
+    InformationComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +66,9 @@ import { AdminmainmenuComponent } from './components/administrator/adminmainmenu
     helperService,
     storageVideoService,
     httpService,
-    generalService
+    generalService,
+    admissionsService,
+    AdminmainmenuComponent
 
   ],
   bootstrap: [AppComponent]
