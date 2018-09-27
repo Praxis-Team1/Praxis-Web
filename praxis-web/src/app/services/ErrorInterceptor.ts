@@ -10,6 +10,8 @@ export class ErrorInterceptor implements HttpInterceptor {
     constructor(private router: Router) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+      console.log("aqui interceptando");
         return next.handle(req).do(event => { }, err => {
             if (err instanceof HttpErrorResponse && err.status == 401) {
                 this.router.navigate(['student/login']);

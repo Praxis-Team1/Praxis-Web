@@ -16,6 +16,15 @@ export class httpService {
 
   };
 
+
+  static httpOptionsToken = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer " +  localStorage.getItem('token')
+    })
+
+  };
+
   constructor(public http: HttpClient) {
 
   }
@@ -36,6 +45,26 @@ export class httpService {
   signUp(student: Student){
     return this.http.post<Student>(environment.urlserver+"/students",
       JSON.stringify(student), httpService.httpOptions);
+  }
+
+
+  getSessions() {
+
+    const headers = new Headers({
+     'Content-Type': 'application/json',
+     'Authorization': localStorage.getItem('token')
+   });
+
+
+   return this.http.get(`${environment.urlserver}/session`, httpService.httpOptionsToken);
+
+
+  }
+
+
+  getStudentsForReview(){
+
+    return this.http.get(`${environment.urlserver}/students/review`);
   }
 
 }

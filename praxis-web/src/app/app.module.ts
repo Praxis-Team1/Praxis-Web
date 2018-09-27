@@ -43,6 +43,8 @@ import { LoginGuardService } from './services/login-guard';
 
 
 export function tokenGetter() {
+  console.log(localStorage.getItem('token'));
+
   return localStorage.getItem('token');
 }
 
@@ -71,10 +73,11 @@ export function tokenGetter() {
     JwtModule.forRoot({
     config: {
       tokenGetter: tokenGetter,
-      whitelistedDomains: [environment.urlserver],
-      blacklistedRoutes: [environment.urlserver+"/auth",
+      whitelistedDomains: new Array(new RegExp('^null$')),
+      blacklistedRoutes: [/*environment.urlserver+"/auth"
                         /*  environment.urlserver+"/students"*/
-                         ]
+                      ],
+     authScheme: "JWT"
     }
   })
   ],
