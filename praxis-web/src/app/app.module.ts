@@ -17,11 +17,11 @@ import { InitialNavbarComponent } from './components/shared/initial-navbar/initi
 import { FinishSignUpComponent } from './components/signUp/finish-sign-up/finish-sign-up.component';
 import { MainmenuNavbarComponent } from './components/shared/mainmenu-navbar/mainmenu-navbar.component';
 
-//Routes.
+// Routes.
 import { ROUTES } from './app.routes';
 
 
-//Services
+// Services
 import { helperService } from './services/helperService';
 import { storageVideoService } from './services/storagevideoService';
 import { httpService } from './services/httpService';

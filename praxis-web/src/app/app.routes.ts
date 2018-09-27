@@ -5,6 +5,7 @@ import { ValidatedataComponent } from './components/signUp/validatedata/validate
 import { LoginComponent } from './components/login/login.component';
 import { FinishSignUpComponent } from './components/signUp/finish-sign-up/finish-sign-up.component';
 import { MainmenuComponent } from './components/student/mainmenu/mainmenu.component';
+import { AdminmainmenuComponent } from './components/administrator/adminmainmenu/adminmainmenu.component';
 import { GradesComponent } from './components/student/grades/grades.component';
 export const ROUTES: Routes = [
 
@@ -16,6 +17,7 @@ export const ROUTES: Routes = [
     { path: 'student/signUp/step4', component:  FinishSignUpComponent },
     { path: 'student/dashboard', component:  MainmenuComponent},
     { path: 'student/dashboard/grades', component: GradesComponent },
+    { path: 'admin/admissions', component: AdminmainmenuComponent },
     { path: '', pathMatch: 'full', redirectTo: 'student/login' },
     { path: '**', pathMatch: 'full', redirectTo: 'student/login' }
 ];
