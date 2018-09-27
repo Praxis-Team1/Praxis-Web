@@ -8,9 +8,6 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class httpService {
 
-
-
-
   static httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -22,11 +19,9 @@ export class httpService {
 
   }
 
-
   getMessage() {
     return this.http.get(environment.urlserver);
   }
-
 
   /*Aqui debeberia ir la peticion para hacer el login, pero pondremos algo de prueba*/
   /*Se simula el backend */
@@ -37,10 +32,13 @@ export class httpService {
         }
   }
 
-
   signUp(student: Student){
     return this.http.post<Student>(environment.urlserver+"/students",
       JSON.stringify(student), httpService.httpOptions);
+  }
+
+  getStudentsForReview(){
+    return this.http.get(`${environment.urlserver}/students/review`);
   }
 
 }
